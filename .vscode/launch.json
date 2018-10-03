@@ -11,17 +11,17 @@
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopOnEntry": false,
-            "mainClass": "main.Main",
+            "mainClass": "",
             "args": ""
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-App<Assigment01>",
+            "name": "Debug (Launch)-Main<Assigment01>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopOnEntry": false,
-            "mainClass": "main.App",
+            "mainClass": "main.Main",
             "args": "",
             "projectName": "Assigment01"
         },
