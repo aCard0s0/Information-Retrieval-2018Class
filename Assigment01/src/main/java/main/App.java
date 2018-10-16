@@ -1,21 +1,19 @@
 package main;
 
 import java.io.File;
-import java.io.StreamTokenizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.Map.Entry;
 
 import models.Docs;
+import models.Posting;
 import readers.StreamWrapper;
 import tokenizer.TokenizerWrapper;
 
@@ -51,7 +49,7 @@ public class App {
 
         HashMap<Integer, List<String>> tokens = tokenizer(list);
 
-        indexer2(tokens);
+        indexer(tokens);
     }
 
     /**
@@ -104,48 +102,7 @@ public class App {
         return hash;
     }
 
-    /* public void indexer(HashMap<Integer, List<String>> hash) {
-
-        HashSet<Posting> hashPosting = new HashSet<Posting>();      // dont care about order!
-
-        for (Integer key: hash.keySet()) {
-
-            List<String> value = hash.get(key);
-
-            for(Iterator<String> i = value.iterator(); i.hasNext();) {
-                hashPosting.add( new Posting(key, i.next() )) ;
-            }
-            System.out.println(key +" "+ value);
-        }
-
-        for(Iterator<Posting> i= hashPosting.iterator(); i.hasNext();){
-            System.out.println(i.next().toString());
-        }
-
-        HashMap<String, List<DocIdAndNumFreq>> mapped = new HashMap<String, List<DocIdAndNumFreq>>();
-
-        for(Iterator<Posting> i= hashPosting.iterator(); i.hasNext();){
-            
-            Posting post = i.next();
-            String newkey = post.getValue();        // token
-
-            List<DocIdAndNumFreq> values = new ArrayList<DocIdAndNumFreq>();
-
-            if (mapped.containsKey(newkey)) {
-                values = mapped.get(newkey);
-                values.add(new DocIdAndNumFreq( post.getId(), 1 ));
-
-            } else {
-                //values.add( new DocIdAndNumFreq(post.getId(), 1)
-                //mapped.put(newkey,  values));
-            }
-
-           
-        }
-
-    } */
-
-    public void indexer2(HashMap<Integer, List<String>> hash) {
+    public void indexer(HashMap<Integer, List<String>> hash) {
     
         List< Entry<Integer, List<String>> > list = new ArrayList< Map.Entry<Integer, List<String> >>( hash.entrySet() );
         HashMap<String, List<Posting> > result = new HashMap<>( );
@@ -155,7 +112,6 @@ public class App {
             Entry<Integer, List<String>> pair = i.next();
             List<String> sortTokens = pair.getValue();
             Collections.sort(sortTokens);                                               // sorting the token list for each document id
-
             //System.out.println( pair.getKey() +" "+ sortTokens );
 
             String token = null;
@@ -201,6 +157,7 @@ public class App {
             System.out.println(key +"="+ result.get(key));
         } */
     }
+
 
     public <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
 
