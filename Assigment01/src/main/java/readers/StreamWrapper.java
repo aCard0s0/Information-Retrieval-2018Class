@@ -15,28 +15,29 @@ public class StreamWrapper {
 
     private FileInputStream inputStream;
     private Scanner sc;
-    private Collection<Corpus> list;
+    private Collection<Docs> list;
 
     public StreamWrapper() {
         this.inputStream = null;
         this.sc = null;
-        this.list = new ArrayList();
+        this.list = new ArrayList<Docs>();
     }
 
 
-    public Collection<Corpus> read(String path) {
+    public Collection<Docs> read(String path) {
 
         try {
             inputStream = new FileInputStream(path);
             sc = new Scanner(inputStream, "UTF-8");
 
             int i = 0;
+            sc.nextLine();
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 //System.out.println(line);
 
                 String[] lines = line.split("\\t");
-                list.add(new Corpus(i, lines[5], lines[12], lines[13]));
+                list.add(new Docs(i, lines[5], lines[12], lines[13]));
                 i++;
             }
 

@@ -1,15 +1,15 @@
 package models;
 
-public class Corpus {
+public class Docs {
 
     private int id;
     private String productTitle;
     private String reviewHeadline;
     private String reviewBody;
 
-    public Corpus() {}
+    public Docs() {}
 
-    public Corpus(int id, String productTitle, String reviewHeadline, String reviewBody) {
+    public Docs(int id, String productTitle, String reviewHeadline, String reviewBody) {
         this.id = id;
         this.productTitle = productTitle;
         this.reviewHeadline = reviewHeadline;
