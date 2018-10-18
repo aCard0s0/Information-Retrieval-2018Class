@@ -13,15 +13,7 @@ public class Main
 {
     public static void main( String[] args )
     {
-        Memory mem = new Memory();
-        Timer time = new Timer();
-        mem.printMemory();
-        time.startTimer();
-
         App app = new App();
         app.start();
-
-        time.printDuration();
-        mem.printMemory();
     }
 }

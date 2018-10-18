@@ -1,5 +1,8 @@
 package magement;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *  Simple class to manager execution time.
  * 
@@ -11,15 +14,8 @@ public class Timer {
     private long stopTime;
 
     public Timer() {
-        this.startTime = -1;
+        this.startTime =System.nanoTime();
         this.stopTime = -1;
-    }
-
-    /**
-     *  Save the time that method was invoked.
-     */
-    public void startTimer() {
-        this.startTime = System.nanoTime();
     }
 
     /**
@@ -29,21 +25,22 @@ public class Timer {
         this.stopTime = System.nanoTime();
     }
 
+    public void currentTime() {
+
+        System.out.println(
+            new SimpleDateFormat("mm:ss:SSS").format(new Date(
+                (System.nanoTime() - this.startTime) / 1000000
+            ))
+        );
+    }
+
     /**
      *  Print time duration since the startTimer() method was last invoked or error otherwise.
      *  If stopTimer() method wasn't call, this method will take care off it.
      */
-    public void printDuration() {
+    public void printTotalDuration() {
 
-        if(this.startTime == -1){
-            System.err.println("Timer not started!");
-            return ;
-        }
-
-        if(this.stopTime == -1){
-            stopTimer();
-        }
-
+        stopTimer();
         System.out.println("Execution duration: "+ ((this.stopTime - this.startTime) / 1000000) +"ms");
     }
 }

@@ -12,30 +12,36 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import models.Docs;
+import indexer.Indexer;
+import iooperations.CorpusReader;
+import magement.DocCollection;
+import magement.Memory;
+import magement.Timer;
+import models.Doc;
 import models.Posting;
-import readers.StreamWrapper;
-import tokenizer.TokenizerWrapper;
+import tokenizer.ImprovedTokenizer;
+import tokenizer.SimpleTokenizer;
+import tokenizer.Tokenizer;
 
 public class App {
 
     public static final String SRC_PATH = "testing";
 
-    private File src;
-    private File folder;
-    private int fileCounter; 
-    private int subdirCounter;
-
-    private StreamWrapper reader;
-    private TokenizerWrapper tokens;
+    private Memory mem;                 /** Responsavel pola gestão de memoria */
+    private Timer time;
+    private CorpusReader cr;            /** Responsavel pela leitura de ficheiro */
+    private DocCollection docColl;      /** Responsavel por guardar os Docs lidos do ficheiro */
+    private Tokenizer tokens;           /** Responsavel por normalizar os termos */
+    private Indexer indexer;            /** Responsavel pelo index invertido */
+    private Doc doc;                    // doc currently reading
 
     public App() {
-        this.src = new File(SRC_PATH);
-        this.fileCounter = 0; 
-        this.subdirCounter = 0;
-
-        this.reader = new StreamWrapper();
-        
+        this.mem = new Memory(1510, 0.9);     // 500 Mbs    TODO: 400mb testing file
+        this.time = new Timer();
+        this.cr = new CorpusReader();
+        this.docColl = new DocCollection();
+        // token instanciation depends on option
+        this.indexer = new Indexer();
     }
 
     /**
@@ -43,19 +49,60 @@ public class App {
      */
     public void start() {
 
-        workEvaluation();
-        
-        Collection<Docs> list = readCollection();
+        // workEvaluation();
 
-        HashMap<Integer, List<String>> tokens = tokenizer(list);
+        this.cr.initFile();
+        while( (this.doc = this.cr.read()) != null ){
+            // System.out.println(doc);
+            
+            //this.docColl.addDoc(doc);                      // é necessário? Se sim temos que guarda-lo em segmentos, e o doc result?
 
-        indexer(tokens);
+            //if (arg do tipo de tokenizer)
+                this.tokens = new SimpleTokenizer(this.doc);
+            //else
+                //tokens = new ImprovedTokenizer(tokens);
+            
+            // stop words
+            // stemmer implementation
+
+            this.tokens.applyFilter();
+            this.indexer.addTerms( this.tokens.getDocId(), this.tokens.getTermsList() );  // Core operation
+            
+            // Mem Test - use threads?
+            if (mem.isHighUsage()) {
+                //System.out.println("Memory usage is high!");
+                mem.printMemory();
+                //docColl.saveIntoDisk();
+                //docColl.freeColReferences();
+                indexer.saveIntoDisk();
+                indexer.freeMapReferences();
+                System.gc();
+                mem.printMemory();
+                time.currentTime();
+            }
+        }
+        cr.closeFile();
+        System.out.println("Finished reading the file...");
+        // docColl ?
+        indexer.saveIntoDisk();
+        indexer.freeMapReferences();  // probably not needed
+        System.gc();
+        //docColl.mergeCollections();
+        indexer.mergeMaps();
+
+        //this.indexer.print();
+        //time.printTotalDuration();
     }
 
     /**
      *  
      */
     private void workEvaluation() {
+
+        File src = new File(SRC_PATH);
+        int fileCounter = 0; 
+        int subdirCounter = 0;
+        File folder;
 
         for (String file : src.list()) {
             folder = new File(SRC_PATH +"/"+ file);
@@ -68,108 +115,6 @@ public class App {
         }
         System.out.println("Directories: "+ subdirCounter);
         System.out.println("Files: "+ fileCounter);
-    }
-
-    private Collection<Docs> readCollection() {
-
-        Collection<Docs> list = this.reader.read(SRC_PATH +"/sample_us.tsv");
-
-        /* for (Docs c : list) {
-            System.out.println(c);
-        } */
-
-        return list;
-    }
-
-    /**
-     *      TODO:  StreamTokenizer 
-     * @param list
-     * @return
-     */
-    private HashMap<Integer, List<String>> tokenizer(Collection<Docs> list) {
-
-        HashMap<Integer, List<String>> hash = new HashMap<Integer, List<String>>();
-
-        int id =0;
-        for (Iterator<Docs> i = list.iterator(); i.hasNext();) {
-            Docs item = i.next();
-            this.tokens = new TokenizerWrapper(item.getDocInfo());
-            this.tokens.applyFilter();
-            hash.put(id, this.tokens.getTokenList());
-            id++;
-        }
-
-        return hash;
-    }
-
-    public void indexer(HashMap<Integer, List<String>> hash) {
-    
-        List< Entry<Integer, List<String>> > list = new ArrayList< Map.Entry<Integer, List<String> >>( hash.entrySet() );
-        HashMap<String, List<Posting> > result = new HashMap<>( );
-
-        for( Iterator<Entry<Integer, List<String>>> i = list.iterator(); i.hasNext();) {
-
-            Entry<Integer, List<String>> pair = i.next();
-            List<String> sortTokens = pair.getValue();
-            Collections.sort(sortTokens);                                               // sorting the token list for each document id
-            //System.out.println( pair.getKey() +" "+ sortTokens );
-
-            String token = null;
-            List<Posting> postingList = null;
-            for( Iterator<String> t = sortTokens.iterator(); t.hasNext();) {
-
-                token = t.next();
-                if (result.containsKey(token)) {
-                    postingList = result.get(token);
-                    boolean flag = true;                                                   // flag verify if docId already exist in Posting List
-                    for (Iterator<Posting> p = postingList.iterator(); p.hasNext();) {
-                        if (p.next().getDocId() == pair.getKey()) {
-                            flag = false;
-                            break;
-                        }
-                    }
-                    if (flag) {
-                        int nfreq = Collections.frequency(sortTokens, token);
-                        postingList.add(new Posting(pair.getKey(), nfreq));
-                        result.put(token, postingList);
-                    }
-
-                } else {
-                    postingList = new ArrayList<>();
-                    int nfreq = Collections.frequency(sortTokens, token); 
-                    postingList.add(new Posting(pair.getKey(), nfreq) );       // create the number of frequency into a document
-                    result.put(token, postingList);
-                }
-            }
-        }
-
-        /* 
-        // Efficient printing
-        List< Entry<String, List<Posting>> > list2 = new ArrayList< Map.Entry<String, List<Posting> >>( result.entrySet() );
-        for( Iterator< Entry<String, List<Posting> >> d = list2.iterator(); d.hasNext();) { 
-            System.out.println(d.next());
-        } */
-
-        // Order printing
-        /* Object[] keys = result.keySet().toArray();
-        Arrays.sort(keys);
-        for(Object key : keys) {
-            System.out.println(key +"="+ result.get(key));
-        } */
-    }
-
-
-    public <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
-
-        List<Entry<K, V>> list = new ArrayList<Map.Entry<K,V>>(map.entrySet());
-        list.sort(Entry.comparingByValue());
-
-        Map<K, V> result = new LinkedHashMap<K,V>();
-        for (Entry<K, V> entry : list) {
-            result.put(entry.getKey(), entry.getValue());
-        }
-
-        return result;
     }
 
 }

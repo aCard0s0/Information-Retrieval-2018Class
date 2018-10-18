@@ -1,22 +1,22 @@
 package models;
 
-public class Docs {
+public class Doc {
 
     private int id;
     private String productTitle;
     private String reviewHeadline;
     private String reviewBody;
 
-    public Docs() {}
+    public Doc() {}
 
-    public Docs(int id, String productTitle, String reviewHeadline, String reviewBody) {
+    public Doc(int id, String productTitle, String reviewHeadline, String reviewBody) {
         this.id = id;
         this.productTitle = productTitle;
         this.reviewHeadline = reviewHeadline;
         this.reviewBody = reviewBody;
     }
 
-    public String getDocInfo() {
+    public String toTokens() {
         return getProductTitle() +" "+ getReviewHeadline() +" "+ getReviewBody();
     }
 
