@@ -15,6 +15,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class Indexer {
 
@@ -35,8 +39,10 @@ public class Indexer {
             
             writer = Files.newBufferedWriter(
                 Paths.get("testing/indexer/", "partial_index_"+ this.num +".txt") );
-
-            pairs.forEach((key, value) -> {
+            
+            Map<String, List<Posting>> treeMap = new TreeMap<>(pairs);
+            
+            treeMap.forEach((key, value) -> {
                 try {
                     writer.write(key + "=" + value + System.lineSeparator());
 
@@ -85,6 +91,8 @@ public class Indexer {
     }
 
     public void mergeMaps() {
+        
+        
     }
 
     public void print() {

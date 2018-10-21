@@ -52,6 +52,7 @@ public class CorpusReader {
 
     public Doc read () {
 
+        
         // Skip first line
         if(this.firstLine) {
             try {
@@ -64,12 +65,22 @@ public class CorpusReader {
         
         try {
             this.line = this.reader.readLine();
+
             this.tokens = this.line.split("([\t])+");
+
             this.result = new Doc(this.docId, this.tokens[5], this.tokens[12], this.tokens[13]);
             this.docId++;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
+            
+        } catch (NullPointerException ee){
+            ee.printStackTrace();
+            return null;
+        } catch (ArrayIndexOutOfBoundsException eee){
+            eee.printStackTrace();
+            return null;
         }
         return this.result;
     }
