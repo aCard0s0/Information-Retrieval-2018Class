@@ -2,13 +2,15 @@ package tokenizer;
 
 import java.util.List;
 
+import models.Doc;
+
 public interface Tokenizer {
 
     /**
      * 
      * @return
      */
-    void applyFilter();
+    void applyFilter(Doc doc);
 
     /**
      * 

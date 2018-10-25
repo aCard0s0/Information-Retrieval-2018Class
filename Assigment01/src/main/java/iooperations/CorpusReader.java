@@ -6,9 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Scanner;
 
 import models.*;
 
@@ -52,7 +49,6 @@ public class CorpusReader {
 
     public Doc read () {
 
-        
         // Skip first line
         if(this.firstLine) {
             try {
@@ -72,14 +68,14 @@ public class CorpusReader {
             this.docId++;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
             
         } catch (NullPointerException ee){
-            ee.printStackTrace();
+            //ee.printStackTrace();
             return null;
         } catch (ArrayIndexOutOfBoundsException eee){
-            eee.printStackTrace();
+            //eee.printStackTrace();
             return null;
         }
         return this.result;
@@ -91,5 +87,9 @@ public class CorpusReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getNumOfDocs() {
+        return this.docId;
     }
 }

@@ -1,24 +1,12 @@
 package main;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import indexer.Indexer;
 import iooperations.CorpusReader;
 import magement.DocCollection;
 import magement.Memory;
 import magement.Timer;
 import models.Doc;
-import models.Posting;
+import segments.SegCollection;
 import tokenizer.ImprovedTokenizer;
 import tokenizer.SimpleTokenizer;
 import tokenizer.Tokenizer;
@@ -29,15 +17,19 @@ public class App {
 
     private Memory mem;                 /** Responsavel pola gestão de memoria */
     private Timer time;
+
     private CorpusReader cr;            /** Responsavel pela leitura de ficheiro */
     private DocCollection docColl;      /** Responsavel por guardar os Docs lidos do ficheiro */
     private Tokenizer tokens;           /** Responsavel por normalizar os termos */
     private Indexer indexer;            /** Responsavel pelo index invertido */
     private Doc doc;                    // doc currently reading
 
-    public App() {
-        this.mem = new Memory(1510, 0.9);     // 500 Mbs    TODO: 400mb testing file
-        this.time = new Timer();
+    private SegCollection segColl;
+
+    public App(Memory mem, Timer time) {
+        this.mem = mem;
+        this.time = time;
+
         this.cr = new CorpusReader();
         this.docColl = new DocCollection();
         // token instanciation depends on option
@@ -45,76 +37,73 @@ public class App {
     }
 
     /**
-     *  Start the app doing frist a directory evaluation.
+     *      1º Phase
      */
-    public void start() {
+    public void readSrcFile(boolean tokenizer) {
 
-        // workEvaluation();
-
+        System.out.println("Start reading the source file, creating Doc and normalize the Tokens.");
+        
+        if (tokenizer) {
+            this.tokens = new SimpleTokenizer();
+        } else {
+            this.tokens = new ImprovedTokenizer();
+        }
+        
         this.cr.initFile();
         while( (this.doc = this.cr.read()) != null ){
-            // System.out.println(doc);
             
-            //this.docColl.addDoc(doc);                      // é necessário? Se sim temos que guarda-lo em segmentos, e o doc result?
+            //this.docColl.addDoc(doc);                      // por enquanto não é necessario
 
-            //if (arg do tipo de tokenizer)
-                this.tokens = new SimpleTokenizer(this.doc);
-            //else
-                //tokens = new ImprovedTokenizer(tokens);
-            
-            // stop words
-            // stemmer implementation
-
-            this.tokens.applyFilter();
+            this.tokens.applyFilter(this.doc);
             this.indexer.addTerms( this.tokens.getDocId(), this.tokens.getTermsList() );  // Core operation
             
             // Mem Test - use threads?
             if (mem.isHighUsage()) {
                 //System.out.println("Memory usage is high!");
-                mem.printMemory();
                 //docColl.saveIntoDisk();
                 //docColl.freeColReferences();
-                indexer.saveIntoDisk();
-                indexer.freeMapReferences();
+                indexer.saveParcialIndexerIntoDisk();
                 System.gc();
-                mem.printMemory();
-                time.currentTime();
             }
         }
         cr.closeFile();
-        System.out.println("Finished reading the file...");
-        // docColl ?
-        indexer.saveIntoDisk();
-        indexer.freeMapReferences();  // probably not needed
-        System.gc();
+        // this.docColl.save ?
+        indexer.saveParcialIndexerIntoDisk();
         //docColl.mergeCollections();
-        indexer.mergeMaps();
-
+        System.gc();
+        System.out.println("*Finished reading the file.");
+        System.out.println("\t"+ this.cr.getNumOfDocs() +" Docs processed in "+ this.time.getCurrentTime());
         //this.indexer.print();
-        //time.printTotalDuration();
     }
 
     /**
-     *  
+     *      2º Phase
      */
-    private void workEvaluation() {
+    public void createDicionary() {
 
-        File src = new File(SRC_PATH);
-        int fileCounter = 0; 
-        int subdirCounter = 0;
-        File folder;
+        System.out.println("Merging Parcial Indexers");
+        this.segColl = new SegCollection(this.indexer.getNumSegments());     // this.indexer.getNumSegments()
+        
+        while( segColl.readerHasDocToRead() ) {
 
-        for (String file : src.list()) {
-            folder = new File(SRC_PATH +"/"+ file);
+            segColl.calcuteNextTermToWrite();   // already merge values if key are the same across all tmp files.
+            segColl.setSegWriter(); // set the previous line to be written
+            
+            if (mem.isHighUsage()) {
+                segColl.saveOrderIndexerToDisk();
+                segColl.saveDicionaryToDisk();
+                System.gc();
+            }
 
-            if (folder.isFile())
-                fileCounter++;
-
-            else if (folder.isDirectory())
-                subdirCounter++;
+            segColl.setNextLineToSelectedReader();
         }
-        System.out.println("Directories: "+ subdirCounter);
-        System.out.println("Files: "+ fileCounter);
+        segColl.saveOrderIndexerToDisk();
+        segColl.saveDicionaryToDisk();
+        System.gc();
+        System.out.println("*Finished Merging Parcial Indexers");
+        System.out.println("\tTime:"+ this.time.getCurrentTime());
+
+        //segColl.loadDicionaryToMemory();
     }
 
 }

@@ -1,10 +1,8 @@
 package tokenizer;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import models.Doc;
 
@@ -16,14 +14,17 @@ public class SimpleTokenizer implements Tokenizer{
     private Doc doc;
     private List<String> termsList;
 
-    public SimpleTokenizer(Doc doc) {
+    public SimpleTokenizer() {
 
-        this.doc = doc;
         this.termsList = new ArrayList<String>();
     }
 
     @Override
-    public void applyFilter() {
+    public void applyFilter( Doc doc) {
+
+        // TODO:
+        this.doc = doc;
+        this.termsList = new ArrayList<String>();
 
         String tokens = doc.toTokens();
         tokens = tokens.toLowerCase();
@@ -47,46 +48,5 @@ public class SimpleTokenizer implements Tokenizer{
     public List<String> getTermsList() {
         return termsList;
     }
-   
-
-    /**
-     * This implementation much be final...
-     * ref: https://stackoverflow.com/questions/3110547/java-how-to-create-new-entry-key-value
-     * 
-     * @param <K>
-     * @param <V>
-     */
-    final class MyEntry<K, V> implements Map.Entry<K, V> {
-
-        private final K key;
-        private V value;
     
-        public MyEntry(K key, V value) {
-            this.key = key;
-            this.value = value;
-        }
-    
-        @Override
-        public K getKey() {
-            return key;
-        }
-    
-        @Override
-        public V getValue() {
-            return value;
-        }
-    
-        @Override
-        public V setValue(V value) {
-            V old = this.value;
-            this.value = value;
-            return old;
-        }
-
-        @Override
-        public String toString() {
-            return getKey() +"="+ getValue();
-        }
-    }
-
 }

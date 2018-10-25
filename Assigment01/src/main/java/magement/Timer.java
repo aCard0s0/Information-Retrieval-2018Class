@@ -25,8 +25,15 @@ public class Timer {
         this.stopTime = System.nanoTime();
     }
 
-    public void currentTime() {
+    public String getCurrentTime() {
 
+        return new SimpleDateFormat("mm:ss:SSS").format(new Date(
+            (System.nanoTime() - this.startTime) / 1000000
+        ));
+    }
+
+    public void printCurrentTime() {
+        
         System.out.println(
             new SimpleDateFormat("mm:ss:SSS").format(new Date(
                 (System.nanoTime() - this.startTime) / 1000000

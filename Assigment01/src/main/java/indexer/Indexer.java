@@ -15,33 +15,36 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 public class Indexer {
 
-    private HashMap<String, List<Posting>> pairs;
-    private int num; /* Number of segments */
+    private Map<String, List<Posting>> pairs;
+    private int num;                            /* Number of segments */
+    
 
     public Indexer() {
+        this.num = 0;
         this.pairs = new HashMap<>();
-        this.num = 1;
     }
 
-    public void saveIntoDisk()  {
+    /**
+     *  Convert HashMap to TreeMap to sort the terms.
+     *  Write the TreeMap in disk, each line with the format: 
+     *      term=[docId:nºfrequency, ...]
+     */
+    public void saveParcialIndexerIntoDisk()  {
 
         //System.out.println("\t *Saving indexer");
         Writer writer;
+        Map<String, List<Posting>> treeMap = new TreeMap<>(this.pairs);
 
         try {
             
             writer = Files.newBufferedWriter(
-                Paths.get("testing/indexer/", "partial_index_"+ this.num +".txt") );
-            
-            Map<String, List<Posting>> treeMap = new TreeMap<>(pairs);
-            
+                Paths.get("testing/tmp/", "partial_index_"+ this.num +".txt") );
+
             treeMap.forEach((key, value) -> {
                 try {
                     writer.write(key + "=" + value + System.lineSeparator());
@@ -50,15 +53,14 @@ public class Indexer {
                     e.printStackTrace();
                 }
             });
+            writer.close();
+            
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         this.num++;
-    }
 
-    public void freeMapReferences() {
-        //System.out.println("\t *Free memory");
-        this.pairs = new HashMap<>();
+        this.pairs = new HashMap<>();       // free References
     }
 
     public void addTerms(int docId, List<String> termsList) {
@@ -90,11 +92,6 @@ public class Indexer {
         str = new HashSet<>();  // free Set memory ?
     }
 
-    public void mergeMaps() {
-        
-        
-    }
-
     public void print() {
 
         // Order printing
@@ -105,4 +102,10 @@ public class Indexer {
         }
     }
 
+    /**
+     * @return the number of files in the tmp folder
+     */
+    public int getNumSegments() {
+        return this.num;
+    }
 }

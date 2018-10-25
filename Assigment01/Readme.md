@@ -1,30 +1,28 @@
-# STROAM Frontend
+# Assignment 01 - Creating Invert Indexer
 
-This is the Authentication Proxy Server of the STROAM system. It was build to protect the STROAM services.
-Built with Springboot Security, using MySQL database.
+This is the frist Assignment to the class Information Retrivel 2018/2019 given in the Aveiro's University.
+Built with Maven and Java 1.8
 
-## What is already done
+## Already Done
 This section will be updated as soon as development goes on.
-* 
-* implement interface for tokenizer;
-* 
+* I/O operation in large files.
+* Two Tokenizer, simples and Improved with Stemmer, for term's normalization 
+* Memory magement, when full, the main object are written in disk in TMP folder.
+* Write sortted Indexer without repetion terms in final folder.
+* Write sortted Dicionary that map a term to a final file and line.
 
 ## TODO
 This section will be updated as soon as development goes on.
-* Document Result: create stucture associate docId to a customer_id review_id from sample;
-* Read files Doc by Doc;
-* run program with arg to chose tokenizer type;
-* Chose rules to "new" tokenizer;
-* Desacopular "indexer" function;
-* Implement Stemmer and Stopwords;
-* Write segments in disk;
-* Merge posting list segments;
+* Improved option code.
+* Improved object writting.
+* Stemmer bug in the .jar file.
+* pom file review.
 
 ### How to run (locally)
 
 * Install Java 1.8
 
-* Install Maven or use the wrapper "mvnw" file
+* Install Maven
 
 * Install Java libraries
 ```
@@ -33,14 +31,12 @@ $ mvn install
 
 * Start Project
 ```
-$ mvn spting-boot:run
+$ cd target
+```
+```
+$ java -jar Assigment01-1.0-SNAPSHOT [-st | -it]
 ```
 
-* Build
-
-* Publish
-
-* Go to http://localhost:65069 or http://127.0.0.1:65069
-
-### Author
+### Authors
 * **André Cardoso** - [GitHub](https://github.com/aCard0s0)
+* **Ivo Angêlico** - [GitHub](https://github.com/ivoangelico)
