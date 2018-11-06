@@ -68,8 +68,10 @@ public class App {
     public void createDicionary() {
 
         System.out.println("Merging parcial indexers and creating dicionary");
-        this.segColl = new SegCollection(this.indexer.getNumSegments());     // this.indexer.getNumSegments()
+        this.segColl = new SegCollection(80);     // this.indexer.getNumSegments()
         
+        //this.mem.setNewUsage(0.75);
+
         while( segColl.readerHasDocToRead() ) {
 
             segColl.calcuteNextTermToWrite();   // already merge values if key are the same across all tmp files.

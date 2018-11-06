@@ -51,23 +51,26 @@ public class ImprovedTokenizer implements Tokenizer{
 
         for(String token : tokensArr){
 
-            /* if (isEmail() ) {
-                token = setEmail();
+            token = token.replaceAll("[^a-zA-Z0-9'@-]", "");
+            if (isStopWord(token)) {
+                continue;
+            
+            } else if (isEmail(token)) {
+                this.termsList.add(token);
 
             } else if (isContration()) {
-                token = isContration();
+                token = setContration();
+                this.termsList.add(token);
 
             } else if (isDash()) {
-                token = isDash();
-                
-            } else if (isStopWord()) {
-                token = isStopWord();
-                
+                token = setDash();
+                this.termsList.add(token);
             }
-            this.termsList.add(token); */
+            
+            token = token.replaceAll("[^a-zA-Z]", "");
 
 
-            if (token.contains("@")) {    //if it's email go to list
+            /* if (token.contains("@")) {    //if it's email go to list
                 aux=token.split("@", 2);
                 if(aux[0].length()>1 && aux[1].length()>3 && aux[1].contains(".")){
                     this.termsList.add(token);
@@ -103,8 +106,32 @@ public class ImprovedTokenizer implements Tokenizer{
                         this.termsList.add(token);
                     }
                 }
-            }
+            } */
         }
+    }
+
+    private String setDash() {
+        return null;
+    }
+
+    private boolean isDash() {
+        return false;
+    }
+
+    private String setContration() {
+        return null;
+    }
+
+    private boolean isContration() {
+        return false;
+    }
+
+    private boolean isEmail(String token) {
+        return false;
+    }
+
+    private boolean isStopWord(String token) {
+        return false;
     }
 
     @Override

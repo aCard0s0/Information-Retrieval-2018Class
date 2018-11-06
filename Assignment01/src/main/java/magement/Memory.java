@@ -13,7 +13,7 @@ public class Memory {
     
     public Memory()
     {
-        this.maxMem = 500;
+        this.maxMem = 1024;
         this.maxUsage = 0.85;
         runtime = Runtime.getRuntime();
     }
@@ -25,6 +25,10 @@ public class Memory {
         runtime = Runtime.getRuntime();
     }
 
+    public void setNewUsage(double newMax) {
+        this.maxUsage = newMax;
+    }
+    
     /**
      * 
      * @return true if max memory defined is reaching 85%

@@ -14,8 +14,7 @@ import java.util.Set;
 public class StopWords {
 
     private Set<String> stopWords;
-    private final String DEFAULT_PATH = "src/main/java/tokenizer/stopwords.txt"; 
-    private final int LIMIT_SIZE = 3;
+    private final String DEFAULT_PATH = "src/main/java/tokenizer/stopwords.txt";
 
     public StopWords() {
 
@@ -28,18 +27,7 @@ public class StopWords {
             String s;
 
             while( (s = swReader.readLine()) != null ) {
-
-                // As stopwords devem ir com forme elas são, não?
-
-                /* if(s.contains("'")){ //get reed of the contraction
-                    if(s.split("'", 2)[1].length()<3){
-                        s = s.split("'", 2)[0];
-                    }
-                }
-                if(s.length() > LIMIT_SIZE){
-                    this.stopWords.add(s);
-                } */
-                this.stopWords.add(s);
+               this.stopWords.add(s);
             }
             swReader.close();
 

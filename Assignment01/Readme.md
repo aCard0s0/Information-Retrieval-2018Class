@@ -15,7 +15,6 @@ This section will be updated as soon as development goes on.
 This section will be updated as soon as development goes on.
 * Improved Tokenizer
 
-
 ### How to run (locally)
 
 * Install Java 1.8
@@ -32,7 +31,7 @@ $ mvn install
 $ cd target
 ```
 ```
-$ java -jar Assigment01-1.0-SNAPSHOT -h
+$ java -jar Assigment01-1.0-SNAPSHOT [-st | -it]
 ```
 
 ### Authors

@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import magement.Constantes;
 
@@ -21,7 +23,7 @@ public class SegCollection {
     private String[] segrTerms;             // termo actual de cada reader
 
     private String term;                    // the smaller Term between all tmp files to be written
-    private String value;                   // value that pretence to the smaller Term
+    private Set<String> value;                   // value that pretence to the smaller Term
     private Set<Integer> readerIdList;     // The Reader that will be autorize to do next line method
 
     private SegWriter segw;                 // responsable to write collection on disk
@@ -38,14 +40,14 @@ public class SegCollection {
 
         for (int i =0; i < num; i++) {
             this.segReader[i] = new SegReader(
-                Constantes.PARCIAL_INDEXER_FOLDER +"partial_index_"+ i +".txt");
+                Constantes.PARCIAL_INDEXER_FOLDER +"parcial_index_"+ i +".txt");
             this.segReader[i].init();   // alreadey read the next line
             this.segrTerms[i] = this.segReader[i].getTerm(); // set the term to read
             this.segrState[i] = true;   // when reach the limit is set to False
         }
 
         this.term = "";
-        this.value = "";
+        this.value = null;
         this.readerIdList = new HashSet<>();
 
         this.segw = new SegWriter();
@@ -73,10 +75,14 @@ public class SegCollection {
                     this.term = this.segrTerms[i];
                     this.value = this.segReader[i].getPostingList();
 
-                } else if (comparation == 0) {
+                } else if (comparation == 0) {      // this block is only executed after at least one time the preview block was executed
+                    //System.out.println("T: "+ this.term +" i: "+ i);
+                    //System.out.println("Value: "+ this.value.size());
+                    //https://stackoverflow.com/questions/9062574/is-there-a-better-way-to-combine-two-string-sets-in-java
                     this.readerIdList.add(i);
-                    this.value = this.value.replace("]", ", ");
-                    this.value += this.segReader[i].getPostingList().replace("[", "");
+                    this.value = Stream.concat(
+                        this.value.stream(), this.segReader[i].getPostingList().stream()
+                    ).collect( Collectors.toSet() );
                 }
             }
         }

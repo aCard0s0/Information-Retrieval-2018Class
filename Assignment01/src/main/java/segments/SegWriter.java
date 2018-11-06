@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 import magement.Constantes;
 
@@ -15,7 +16,7 @@ import magement.Constantes;
  */
 public class SegWriter {
     
-    private Map<String, String> newFile;
+    private Map<String, Set<String>> newFile;
     private String fileName;
     private int nFile;
     private int nLine;
@@ -39,7 +40,7 @@ public class SegWriter {
      * @param key
      * @param value
      */
-    public void addDoc(String key, String value) {
+    public void addDoc(String key, Set<String> value) {
 
         this.newFile.put(key, value);
         this.nLine++;

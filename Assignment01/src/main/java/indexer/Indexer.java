@@ -73,13 +73,13 @@ public class Indexer {
      */
     public void saveParcialIndexerIntoDisk()  {
        
-        Map<String, Set<Posting>> treeMap = new TreeMap<>(this.pairs);
+        this.pairs = new TreeMap<>(this.pairs);     // Transformation to order the key
 
         try {
             this.writer = Files.newBufferedWriter(
                 Paths.get(Constantes.PARCIAL_INDEXER_FOLDER, "parcial_index_" + this.num + ".txt"));
             
-            treeMap.forEach((key, value) -> {
+            this.pairs.forEach((key, value) -> {
                 try {
                     this.writer.write(key + "=" + value + System.lineSeparator());
     

@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SegReader {
 
@@ -14,7 +16,8 @@ public class SegReader {
     private BufferedReader reader;
     private String line;
     private String term;
-    private String postingList = null;
+    
+    private Set<String> postingList;
 
     public SegReader(String path) {
         this.path = path;
@@ -46,12 +49,16 @@ public class SegReader {
     public void readNextLine () {
 
         String tmp[];
+        postingList = new HashSet<>();
 
         try {
             this.line = this.reader.readLine();
             tmp = this.line.split("=");
             this.term = tmp[0];
-            this.postingList = tmp[1];
+
+            for(String term : tmp[1].replaceAll("\\[|\\]", "").split(", ")) {
+                postingList.add(term);
+            }
 
         } catch (IOException e) {
             //e.printStackTrace();
@@ -79,7 +86,7 @@ public class SegReader {
         return this.term;
     }
 
-	public String getPostingList() {
+	public Set<String> getPostingList() {
         return this.postingList;
 	}
 }

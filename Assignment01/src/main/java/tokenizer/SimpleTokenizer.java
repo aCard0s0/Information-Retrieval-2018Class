@@ -24,7 +24,7 @@ public class SimpleTokenizer implements Tokenizer{
         this.termsList = new HashSet<String>();
 
         for(String token : doc.toTokens().split(" ") ) {
-            token = token.toLowerCase().replaceAll("[^a-zA-Z ]", "");   // all to lower case, replace non letters
+            token = token.toLowerCase().replaceAll("[^a-z]", "");   // all to lower case, replace non letters
             if(token.length() > LIMIT_SIZE) {
                 this. termsList.add(token);
             }
