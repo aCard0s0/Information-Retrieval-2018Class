@@ -53,11 +53,11 @@ public class CorpusReader {
 
     private void isValidFile(String path) {
 
-        f = new File(path);
+        /* f = new File(path);
         if ( !(f.isFile() || f.getName().substring(f.getName().length()-4).equals(".tsv")) ) {
             System.err.println( path + "\nFile not found, please provide the correct path.");
             System.exit(1);
-        }
+        } */
     }
 
     public void initFile() {
@@ -65,6 +65,16 @@ public class CorpusReader {
         try {
             this.inputStream = new FileInputStream(this.src);
             this.reader = new BufferedReader(new InputStreamReader(this.inputStream, "UTF-8"));
+
+            // Skip first line
+        if(this.firstLine) {
+            try {
+                this.reader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            this.firstLine = false;
+        }
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -78,16 +88,6 @@ public class CorpusReader {
      */
     public Doc read () {
 
-        // Skip first line
-        if(this.firstLine) {
-            try {
-                this.reader.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            this.firstLine = false;
-        }
-        
         try {
             this.line = this.reader.readLine();
 
@@ -110,6 +110,11 @@ public class CorpusReader {
     public void closeFile() {
         try {
             this.reader.close();
+            this.inputStream = null;
+            this.reader = null;
+            this.result = null;   // must start null
+            this.line = null;
+            this.tokens = null;
         } catch (IOException e) {
             e.printStackTrace();
         }

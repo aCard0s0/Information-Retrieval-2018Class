@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -31,13 +32,18 @@ public class Indexer {
         this.pairs = new HashMap<>();
 
         // write folders if not exist
-        File f = new File(Constantes.PARCIAL_INDEXER_FOLDER);
+        File f = new File(Constantes.UNORDER_INDEXER_FOLDER);
         if(!f.exists()) {
             f.mkdirs();
         }
     }
 
-    public void addTerms(int docId, Set<String> termsList) {
+    /**
+     * 
+     * @param docId
+     * @param termsList generated from tokenizer. Note that has to be list with repeations.
+     */
+    public void addTerms(int docId, List<String> termsList) {
 
         Set<String> tmpStr = new HashSet<String>();      // Temporary token holder
         Set<Posting> tmpPosting;
@@ -61,9 +67,10 @@ public class Indexer {
                     this.pairs.put(term, tmpPosting);
                 }
             }
+            
         }
-        
         tmpStr = new HashSet<String>();  // free Set memory ?
+        tmpPosting = new HashSet<Posting>();  // free Set memory ?
     }
 
     /**
@@ -77,7 +84,7 @@ public class Indexer {
 
         try {
             this.writer = Files.newBufferedWriter(
-                Paths.get(Constantes.PARCIAL_INDEXER_FOLDER, "parcial_index_" + this.num + ".txt"));
+                Paths.get(Constantes.UNORDER_INDEXER_FOLDER, "parcial_index_" + this.num + ".txt"));
             
             this.pairs.forEach((key, value) -> {
                 try {

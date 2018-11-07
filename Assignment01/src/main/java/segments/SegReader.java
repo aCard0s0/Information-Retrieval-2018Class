@@ -30,6 +30,7 @@ public class SegReader {
 
     /**
      *  This functions instanciate the reader and read the fristline
+     *  Frist term and PostingList already define.
      */
     public void init() {
         
@@ -82,11 +83,20 @@ public class SegReader {
         }
     }
 
+    public boolean hasNextLine() {
+        return this.term != null;
+    }
+
     public String getTerm() {
         return this.term;
     }
 
 	public Set<String> getPostingList() {
         return this.postingList;
+	}
+
+	public String getFileName() {
+        String[] tmp = this.path.split("/");
+		return tmp[tmp.length-1];
 	}
 }

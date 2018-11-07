@@ -1,4 +1,4 @@
-package segments;
+package indexer;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import magement.Constantes;
+import segments.SegReader;
+import segments.SegWriter;
 
 public class SegCollection {
 
@@ -40,7 +42,7 @@ public class SegCollection {
 
         for (int i =0; i < num; i++) {
             this.segReader[i] = new SegReader(
-                Constantes.PARCIAL_INDEXER_FOLDER +"parcial_index_"+ i +".txt");
+                Constantes.UNORDER_INDEXER_FOLDER +"parcial_index_"+ i +".txt");
             this.segReader[i].init();   // alreadey read the next line
             this.segrTerms[i] = this.segReader[i].getTerm(); // set the term to read
             this.segrState[i] = true;   // when reach the limit is set to False
@@ -60,7 +62,7 @@ public class SegCollection {
      * If terms are equal merge the value associate to each one.
      * @return
      */
-    public void calcuteNextTermToWrite() {
+    public void calculateNextTermToWrite() {
 
         int comparation = 0;
         this.term = FINAL_POSITION;    // assume last position
@@ -135,14 +137,14 @@ public class SegCollection {
 	public void saveDicionaryToDisk() {
 
         // write folders if not exist
-        File f = new File(Constantes.COMPLETE_DICIONARY_FOLDER);
+        File f = new File(Constantes.ORDER_INXDEXER_FOLDER);
         if(!f.exists()) {
             f.mkdirs();
         }
 
         try {
             this.writer = Files.newBufferedWriter(
-                    Paths.get(Constantes.COMPLETE_DICIONARY_FOLDER, "Dicionary"+ this.nDic +".txt") );
+                    Paths.get(Constantes.ORDER_INXDEXER_FOLDER, "Dicionary"+ this.nDic +".txt") );
             
             this.dic.forEach((key, value) -> {
                 try {

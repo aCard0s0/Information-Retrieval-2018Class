@@ -23,12 +23,12 @@ public class SegWriter {
     private Writer writer;
 
     public SegWriter() {
-        this.newFile = new LinkedHashMap<>();   // order hashmap
+        this.newFile = new LinkedHashMap<>();   // keep insertion order
         this.nFile = 0;
         this.nLine = 0;
 
         // write folders if not exist
-        File f = new File(Constantes.COMPLETE_INXDEXER_FOLDER);
+        File f = new File(Constantes.ORDER_INXDEXER_FOLDER);
         if(!f.exists()) {
             f.mkdirs();
         }
@@ -51,7 +51,7 @@ public class SegWriter {
         this.setFileName();                     // set file name for the next one to be written
         try {
             this.writer = Files.newBufferedWriter(
-                    Paths.get(Constantes.COMPLETE_INXDEXER_FOLDER, this.fileName) );
+                    Paths.get(Constantes.ORDER_INXDEXER_FOLDER, this.fileName) );
             
             this.newFile.forEach((key, value) -> {
                 try {

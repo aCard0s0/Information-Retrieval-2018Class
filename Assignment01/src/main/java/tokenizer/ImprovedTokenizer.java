@@ -1,7 +1,11 @@
 package tokenizer;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 import models.Doc;
 import org.tartarus.snowball.SnowballStemmer;
@@ -14,7 +18,7 @@ public class ImprovedTokenizer implements Tokenizer{
     private final int LIMIT_SIZE = 3;
 
     private Doc doc;
-    private Set<String> termsList;
+    private List<String> termsList;
     private Set<String> stopwords;
     private SnowballStemmer stemmer;    
     
@@ -42,96 +46,90 @@ public class ImprovedTokenizer implements Tokenizer{
     public void applyFilter(Doc doc) {
 
         this.doc = doc;
-        this.termsList = new HashSet<String>();
+        this.termsList = new ArrayList<String>();
         
         String[] tokensArr = doc.toTokens().toLowerCase().split(" ");
-        String[] aux = null;
-        
-        // token = aux[0].replaceAll("[^a-zA-Z']", "")+"@"+aux[1];
 
         for(String token : tokensArr){
 
             token = token.replaceAll("[^a-zA-Z0-9'@-]", "");
-            if (isStopWord(token)) {
+
+            if(token.length() <= LIMIT_SIZE){
+                continue;
+
+            } else if (isStopWord(token)) {
                 continue;
             
             } else if (isEmail(token)) {
                 this.termsList.add(token);
+                continue;
 
-            } else if (isContration()) {
-                token = setContration();
-                this.termsList.add(token);
+            } else if (isContration(token)) {
+                token = setContration(token);
 
-            } else if (isDash()) {
-                token = setDash();
-                this.termsList.add(token);
+            } else if (isDash(token)) {
+                token = setDash(token);
+            }
+            // remove number and ' @ -
+            token = token.replaceAll("[^a-zA-Z]", "");
+            // stemming
+            this.stemmer.setCurrent(token);
+            if (this.stemmer.stem()){
+                token= this.stemmer.getCurrent();
             }
             
-            token = token.replaceAll("[^a-zA-Z]", "");
-
-
-            /* if (token.contains("@")) {    //if it's email go to list
-                aux=token.split("@", 2);
-                if(aux[0].length()>1 && aux[1].length()>3 && aux[1].contains(".")){
-                    this.termsList.add(token);
-                }
-            }else{
-               
-                if(token.contains("'")){ //get reed of the contraction
-                    aux=token.split("'", -2);
-
-                    if(aux[1].length()<3){
-                        token = aux[0];
-                        token = token.replaceAll("[^a-zA-Z']", "");
-                    }else{                
-                        token = token.replaceAll("[^a-zA-Z]", "");
-                    }
-                }else{
-                    if(token.contains("-")){
-                        aux=token.split("-", 2);
-                        if(aux[1].length()<3){//it's a prefix
-                            token = aux[1];
-                        }
-                    }
-                    token = token.replaceAll("[^a-zA-Z]", "");
-                }
-               
-                if(!this.stopwords.contains(token)){
-                    this.stemmer.setCurrent(token);
-                    if (this.stemmer.stem()){
-                        token= this.stemmer.getCurrent();
-                    }
-
-                    if(token.length() > LIMIT_SIZE){
-                        this.termsList.add(token);
-                    }
-                }
-            } */
+            this.termsList.add(token);
         }
     }
 
-    private String setDash() {
-        return null;
+    private String setDash(String token) {
+        try {
+            return token.split("-")[1];     // english word dont exist sufix
+        }catch(ArrayIndexOutOfBoundsException e){
+            return token;
+        }
     }
 
-    private boolean isDash() {
+    private boolean isDash(String token) {
+
+        if(token.contains("-")){
+            String[] aux = token.split("-", -2);
+            if (aux[1].length() < 3 ) {      //it's a prefix
+               return true;
+            }
+        }
         return false;
     }
 
-    private String setContration() {
-        return null;
+    private String setContration(String token) {
+        return token.split("'")[0];
     }
 
-    private boolean isContration() {
+    private boolean isContration(String token) {
+
+        if (token.contains("'")) {          //get reed of the contraction
+            String[] aux = token.split("'", -2);
+            if (aux[1].length() < 3 && aux[1].length() > 0) {
+                return true;
+            }
+        }
         return false;
     }
 
     private boolean isEmail(String token) {
-        return false;
+
+        try {
+            InternetAddress emailAddr = new InternetAddress(token);
+            emailAddr.validate();
+
+        } catch (AddressException ex) {
+            return false;
+        }
+        return true;
     }
 
     private boolean isStopWord(String token) {
-        return false;
+        return this.stopwords.contains(token);
     }
 
     @Override
@@ -140,7 +138,7 @@ public class ImprovedTokenizer implements Tokenizer{
     }
 
     @Override
-    public Set<String> getTermsList() {
+    public List<String> getTermsList() {
         return termsList;
     }
 }

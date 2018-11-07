@@ -13,7 +13,7 @@ public class Memory {
     
     public Memory()
     {
-        this.maxMem = 1024;
+        this.maxMem = 2048;
         this.maxUsage = 0.85;
         runtime = Runtime.getRuntime();
     }

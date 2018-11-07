@@ -33,7 +33,10 @@ public class Main
         /* After the source file being treated, this function merge all files in tmp folder
         in alfabetic order and create a dicionary that is mantain the memory and is written 
         is disk for the next use. */
-        app.createDicionary();
+        app.mergeIndexerAndCreateDicionary();
+
+        /*  */
+        //app.calculateWeight();
         
         System.out.println("Finish to the end.");
         System.exit(0);

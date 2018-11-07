@@ -1,6 +1,7 @@
 package tokenizer;
 
-import java.util.Set;
+
+import java.util.List;
 
 import models.Doc;
 
@@ -22,5 +23,5 @@ public interface Tokenizer {
      * 
      * @return
      */
-	Set<String> getTermsList();
+	List<String> getTermsList();
 }

@@ -1,13 +1,25 @@
 package main;
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import indexer.Indexer;
+import indexer.SegCollection;
 import iooperations.CorpusReader;
+import magement.Constantes;
 import magement.DocCollection;
 import magement.Memory;
 import magement.Timer;
 import models.Doc;
-import segments.SegCollection;
+import models.Posting;
+import segments.SegReader;
+import segments.SegWriter;
 import tokenizer.Tokenizer;
+import rating.SegController;
+import rating.WeightCompute;
 
 public class App {
 
@@ -20,7 +32,7 @@ public class App {
     private Indexer indexer;            /** Responsavel pelo index invertido */
     private Doc doc;                    // doc currently reading
 
-    private SegCollection segColl;
+    private SegCollection segColl;      /* Controll a collection of segments */
 
     public App(Timer time, Memory mem, CorpusReader reader, Tokenizer tokens) {
         this.time = time;
@@ -65,16 +77,16 @@ public class App {
     /**
      *      2º Phase Create Dicionary & Merge Indexer
      */
-    public void createDicionary() {
+    public void mergeIndexerAndCreateDicionary() {
 
         System.out.println("Merging parcial indexers and creating dicionary");
-        this.segColl = new SegCollection(80);     // this.indexer.getNumSegments()
+        this.segColl = new SegCollection(this.indexer.getNumSegments());     // this.indexer.getNumSegments()
         
         //this.mem.setNewUsage(0.75);
 
         while( segColl.readerHasDocToRead() ) {
 
-            segColl.calcuteNextTermToWrite();   // already merge values if key are the same across all tmp files.
+            segColl.calculateNextTermToWrite();   // already merge values if key are the same across all tmp files.
             segColl.setSegWriter(); // set the previous line to be written
             
             if (mem.isHighUsage()) {
@@ -88,11 +100,38 @@ public class App {
         segColl.saveOrderIndexerToDisk();
         segColl.saveDicionaryToDisk();
         System.gc();
-        System.out.println("*Finished merging parcial indexers");
-        System.out.println("*Dicionry complete");
+        System.out.println("*Finished merging parcial indexers.");
+        System.out.println("*Dicionry complete.");
         System.out.println("\tTotal time:"+ this.time.getCurrentTime());
 
         //segColl.loadDicionaryToMemory();
     }
+
+    /**
+     *      3º Phase Calculate the weight with 1+log(nFreq)
+     */
+	public void calculateWeight() {
+
+        System.out.println("Calculating weight");
+
+        SegController segcrtl = new SegController();    // control one segment
+        //WeightCompute compute = new WeightCompute();
+
+        while(segcrtl.existSegToRead()) {
+
+            segcrtl.computeLog();
+
+            if (mem.isHighUsage()) {
+                segcrtl.saveOrderIndexerToDisk();
+                System.gc();
+            }
+
+            //segcrtl.nextSegment();
+        }
+        segcrtl.saveOrderIndexerToDisk();
+        System.gc();
+        System.out.println("*Finished rating the terms.");
+
+	}
 
 }
