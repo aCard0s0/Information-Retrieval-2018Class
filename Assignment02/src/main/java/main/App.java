@@ -137,8 +137,8 @@ public class App {
                         //this.dic.freeSegLessUsed();  // 1 or 2 ...
                         System.gc();
                     }
+                    this.dic.loadSegmentToMem(term);
                 }
-                this.dic.loadSegmentToMem(term);
                 // Calculate Rank & Save, if revelant. (Top 10)
                 //this.ranking.rankTerm(this.dic.postingList(term), this.cr.getNumOfDocs());
             }

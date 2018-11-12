@@ -126,9 +126,6 @@ public class Dictionary {
 //        calculateDF(this.segtList.getPostingList());
 //    }
 
-    
-
-
     public boolean hasSegmentInMem(String term) {
         
         Dic location = this.dic.get(term);
