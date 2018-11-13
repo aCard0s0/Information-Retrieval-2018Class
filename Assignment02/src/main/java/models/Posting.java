@@ -16,14 +16,16 @@ public class Posting {
 
         String[] tmp = posting.split(":");
         this.setDocId( Integer.parseInt( tmp[0] ));
-        this.setWeight( Integer.parseInt( tmp[1] ));
+        this.setWeight( Double.parseDouble( tmp[1] ));
     }
 
     @Override
     public String toString() {
         return getDocId() +":"+ getWeight();
     }
-
+    public String printScore() {
+        return getDocId() +":"+ getIdf();
+    }
     /**
      * @param docId the docId to set
      */
@@ -43,12 +45,15 @@ public class Posting {
      */
     public double getWeight() {
         return weight;
+    }    
+    public double getIdf() {
+        return idf;
     }
 
     /**
      * @param nFreq the nFreq to set
      */
-    public void setWeight(double weight) {
+    private void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -57,6 +62,7 @@ public class Posting {
     }
 
     public void calculateIDF(double df) {
+
         this.idf = this.weight * df;
     }
 

@@ -129,6 +129,10 @@ public class Dictionary {
     public boolean hasSegmentInMem(String term) {
         
         Dic location = this.dic.get(term);
+        if(segrList.size()==0)
+        {
+            return false;
+        }
         return !segrList.containsKey(location.getFileName());
     }
 
@@ -139,19 +143,22 @@ public class Dictionary {
     public void loadSegmentToMem(String term) {
         
         Dic location = this.dic.get(term);
-        
+
         if (!this.segrList.containsKey( location.getFileName() )){
+
             SegReader segr = new SegReader(Constantes.ORDER_INXDEXER_FOLDER + location.getFileName());
             this.segrList.put(location.getFileName(), segr);
         }
+
     }
 
     public Set<String> postingList(String term) {
-        
+
         Dic location = this.dic.get(term);
+
         SegReader segr = segrList.get(location.getFileName());
         segr.jumpToLine(location.getLine());    // test this
-        
+
         return segr.getPostingList();
     }
     

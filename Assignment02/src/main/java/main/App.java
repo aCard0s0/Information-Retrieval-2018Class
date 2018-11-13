@@ -56,6 +56,8 @@ public class App {
             this.indexer.addTerms( this.tokens.getDocId(), this.tokens.getTermsList() );  // Core operation
             
             if (mem.isHighUsage()) {
+                System.out.println("*\n*\nisHighUsage\n*\n");
+
                 //docColl.saveIntoDisk();
                 //docColl.freeColReferences();
                 indexer.saveParcialIndexerIntoDisk();
@@ -115,7 +117,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         System.out.println("*Search in data set:");
         System.out.println("\tWrite \"!exit\" to exit the program.");
-        
+
         while (true) {
             System.out.print("Query: ");
             String[] userTerms = sc.nextLine().split(" ");
@@ -131,21 +133,31 @@ public class App {
                     System.out.println(term +", not found in dictionary.");
                     continue;
                 }
+                System.out.print("Term: "+term+"\n");
+
                 // if does not contain the segment file in memory, load it.
                 if (!this.dic.hasSegmentInMem(term)) {
                     if (mem.isHighUsage()) {
+
                         //this.dic.freeSegLessUsed();  // 1 or 2 ...
                         System.gc();
                     }
                     this.dic.loadSegmentToMem(term);
                 }
+
+                System.out.println(this.dic.showStatus());
+
+
                 // Calculate Rank & Save, if revelant. (Top 10)
-                //this.ranking.rankTerm(this.dic.postingList(term), this.cr.getNumOfDocs());
+                this.ranking.rankTerm(this.dic.postingList(term), this.cr.getNumOfDocs());
+
             }
+
             //this.ranking.printRevelantDocIds();
-            System.out.println(this.dic.showStatus());
+ 
+
         }
-        
+
     }
 
 }

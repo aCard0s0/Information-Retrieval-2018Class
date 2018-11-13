@@ -17,6 +17,8 @@ public class Ranker {
         for(String posting : postingList) {
             post = new Posting(posting);
             post.calculateIDF(df);      // score
+            System.out.print("score="+post.printScore()+"\n");
+
         }
 
         //calcular a soma do score para cada documento
