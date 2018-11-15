@@ -82,6 +82,8 @@ public class Dictionary {
     private void setnDoc(String name) {
         this.nDocs = Integer.parseInt(name.split("_")[0]);
     }
+
+    
     
     private void load(String path) {
         
@@ -172,5 +174,13 @@ public class Dictionary {
 
     public boolean hasTerm(String term) {
         return this.dic.containsKey(term);
+    }
+
+	public int getNDoc() {
+		return this.nDocs;
+    }
+    
+    public void setnDoc(int ndoc) {
+        this.nDocs = ndoc;
     }
 }

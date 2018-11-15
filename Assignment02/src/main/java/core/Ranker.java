@@ -1,30 +1,36 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.Set;
 import models.Posting;
 
 public class Ranker {
 
+    private Posting max;
+    
     public Ranker() {
-
+        this.max = new Posting();
     }
 
     public void rankTerm(Set<String> postingList, int nDocs) {
 
-        double df = Math.log(nDocs/postingList.size() + 1);
+        double idf = Math.log(nDocs/postingList.size());
 
         Posting post;
         for(String posting : postingList) {
             post = new Posting(posting);
-            post.calculateIDF(df);      // score
-            System.out.print("score="+post.printScore()+"\n");
-
+            post.calculateIDF(idf);      // score
+            if (max.getTf_idf() < post.getTf_idf()) {
+                this.max = post;
+            }
+            System.out.print("score = "+ post.printScore() +"\n");
         }
 
         //calcular a soma do score para cada documento
     }
     
     public void printRevelantDocIds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("DocId: "+ this.max.getDocId() +" weight: "+ this.max.getWeight() +" idf: "+ this.max.getTf_idf() +" position: "+ this.max.getPositions());
+        
     }
 }

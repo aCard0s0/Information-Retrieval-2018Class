@@ -51,6 +51,7 @@ public class Indexer {
         double normalization = 0;
         String term;
         int nFreq;
+        int termPosition = 0;
 
         for (Iterator<String> t = termsList.iterator(); t.hasNext();) {
 
@@ -58,9 +59,13 @@ public class Indexer {
 
             if (!tmppairs.containsKey(term)) {
                 nFreq = Collections.frequency(termsList, term);
-                tmppairs.put(term, new Posting(docId, nFreq));
+                tmppairs.put(term, new Posting(docId, nFreq, termPosition));
                 normalization += nFreq * nFreq;
+            } else {
+                tmppairs.get(term).addPosition(termPosition);
             }
+
+            termPosition++;
         }
 
         normalization = Math.sqrt(normalization);

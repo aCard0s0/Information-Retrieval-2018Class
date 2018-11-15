@@ -15,6 +15,12 @@ public interface Tokenizer {
 
     /**
      * 
+     * @param userTerms
+     */
+    List<String> applyFilter(String[] userTerms);
+
+    /**
+     * 
      * @return
      */
 	int getDocId();

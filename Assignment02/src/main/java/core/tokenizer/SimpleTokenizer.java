@@ -35,6 +35,20 @@ public class SimpleTokenizer implements Tokenizer{
     }
 
     @Override
+    public List<String> applyFilter(String[] userTerms) {
+
+        List<String> tmp = new ArrayList<>();
+
+        for(String token : userTerms ) {
+            token = token.toLowerCase().replaceAll("[^a-z]", "");   // all to lower case, replace non letters
+            if(token.length() > LIMIT_SIZE) {
+                tmp.add(token);
+            }
+        }
+        return tmp;
+    }
+
+    @Override
     public int getDocId() {
         return doc.getId();
     }

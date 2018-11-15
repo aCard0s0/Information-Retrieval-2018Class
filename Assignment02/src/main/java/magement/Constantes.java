@@ -3,7 +3,8 @@ package magement;
 public class Constantes {
 
     //public static final String SOURCE_FILE = "./amazon_reviews_us_Wireless_v1_00.tsv"; //"testing/sample_us.tsv";
-    public static final String SOURCE_FILE = "./amazon_reviews_us_Watches_v1_00.tsv";
+    //public static final String SOURCE_FILE = "./amazon_reviews_us_Watches_v1_00.tsv";
+    public static final String SOURCE_FILE = "./sample_us.tsv";
 
     public static final int MEMORY = 2048;
     //public static final int MEMORY = 1024;

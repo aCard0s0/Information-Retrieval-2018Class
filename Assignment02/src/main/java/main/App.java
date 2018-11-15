@@ -1,7 +1,13 @@
 package main;
 
 import core.Dictionary;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import core.Indexer;
 import core.SegCollection;
@@ -11,6 +17,7 @@ import core.Ranker;
 import magement.Memory;
 import magement.Timer;
 import models.Doc;
+import models.Posting;
 import core.tokenizer.Tokenizer;
 
 public class App {
@@ -56,7 +63,7 @@ public class App {
             this.indexer.addTerms( this.tokens.getDocId(), this.tokens.getTermsList() );  // Core operation
             
             if (mem.isHighUsage()) {
-                System.out.println("*\n*\nisHighUsage\n*\n");
+                //System.out.println("*\n*\nisHighUsage\n*\n");
 
                 //docColl.saveIntoDisk();
                 //docColl.freeColReferences();
@@ -102,7 +109,8 @@ public class App {
         }
         segColl.saveOrderIndexerToDisk();
         //dic.saveDicionaryToDisk(this.cr.getNumOfDocs());    // KEEP_IN_MEMORY
-        segColl.saveDicionaryToDisk(this.cr.getNumOfDocs());        // KEEP_IN_MEMORY
+        segColl.saveDicionaryToDisk(this.cr.getNumOfDocs());        // KEEP_IN_MEMORY   o numero de docs é guardado no nome.
+        dic.setnDoc(this.cr.getNumOfDocs());
         System.gc();
         System.out.println("\tFinished merging parcial indexers.");
         System.out.println("\tDicionary completed in memory and disk.");
@@ -115,49 +123,141 @@ public class App {
     public void readUserInputTerms() {
         
         Scanner sc = new Scanner(System.in);
+        List<String> qTerms;
         System.out.println("*Search in data set:");
         System.out.println("\tWrite \"!exit\" to exit the program.");
 
         while (true) {
             System.out.print("Query: ");
-            String[] userTerms = sc.nextLine().split(" ");
+            String[] userTerms = new String[3];//sc.nextLine().split(" ");
+            userTerms[0] = "thinking";
+            userTerms[1] = "about";
+            userTerms[2] = "boobs";
 
             if (userTerms.length == 1 && userTerms.equals("!exit")) {
+                sc.close();
                 System.exit(0);
             }
-            // validar mais termos ?
 
-            for(String term : userTerms) {
+            qTerms = this.tokens.applyFilter( userTerms );      // same filter that use on courpus reader
+            
+            if(qTerms.size() == 1) {
 
+                String term = qTerms.get(0);
                 if (!this.dic.hasTerm(term)) {
                     System.out.println(term +", not found in dictionary.");
-                    continue;
+                    //continue;
                 }
                 System.out.print("Term: "+term+"\n");
 
                 // if does not contain the segment file in memory, load it.
                 if (!this.dic.hasSegmentInMem(term)) {
                     if (mem.isHighUsage()) {
-
                         //this.dic.freeSegLessUsed();  // 1 or 2 ...
                         System.gc();
                     }
                     this.dic.loadSegmentToMem(term);
                 }
-
                 System.out.println(this.dic.showStatus());
 
-
                 // Calculate Rank & Save, if revelant. (Top 10)
-                this.ranking.rankTerm(this.dic.postingList(term), this.cr.getNumOfDocs());
+                this.ranking.rankTerm(this.dic.postingList(term), this.dic.getNDoc());
+                this.ranking.printRevelantDocIds();
 
+            } else {
+
+                String term;
+                Map<String, Set<String>> qPostingStrList = new HashMap<>();
+
+                // load posting list
+                for(int i=0; i < qTerms.size(); i++) {
+
+                    term = qTerms.get(i);
+                    if (!this.dic.hasSegmentInMem(term)) {
+                        if (mem.isHighUsage()) {
+                            //this.dic.freeSegLessUsed();  // 1 or 2 ...
+                            System.gc();
+                        }
+                        this.dic.loadSegmentToMem(term);
+                    }
+                    qPostingStrList.put(term, this.dic.postingList(term) );
+                }
+
+                // convert  
+                Map<String, Set<Posting>> qPosting = getQueryMap(qTerms, qPostingStrList);
+                
+                // verify doc id
+                
+                Set<Posting> posList = qPosting.get(qTerms.get(0));
+
+                for(Posting p : posList) {
+                    
+                    boolean flag = false;
+                    for(int i=1; i < qTerms.size(); i++) {
+                        Set<Posting> posList2 = qPosting.get(qTerms.get(i));
+                        for(Posting p2 : posList2) {
+                            if (p.getDocId() == p2.getDocId()) {
+                                flag = true;
+                            }
+                        }
+                        if (!flag) 
+                            break;
+                        else if (i != qTerms.size()-1 )
+                            flag = false;
+                    }
+                    if (flag) {
+                        // analise position
+                        Set<Integer> pos = p.getPositionList();
+                        for(Integer p1pos : pos) {
+                            flag = false;
+
+                            for(int i=1; i < qTerms.size(); i++) {
+                            
+                                Set<Posting> posList2 = qPosting.get(qTerms.get(i));
+                                for(Posting p2 : posList2) {
+                                    if (p.getDocId() == p2.getDocId()) {
+                                        for(Integer qpos : p2.getPositionList()) {
+                                            if (p1pos == qpos-i) {
+                                                flag = true;
+                                            }
+                                        }
+                                        if (!flag) 
+                                            break;
+                                        else if (i != qTerms.size()-1 )
+                                            flag = false;
+                                    }
+                                }
+                            }
+                            if(flag){
+                                System.out.print(p.getDocId());
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+
+
+    private Map<String, Set<Posting>> getQueryMap(List<String> qList, Map<String, Set<String>> qPostingStr) {
+
+        Map<String, Set<Posting>> qPosting = new HashMap<>();
+        Set<Posting> posList = new HashSet<>();
+
+        for(int i=0; i < qList.size(); i++) {
+            
+            String t = qList.get(i);
+            Set<String> posListStr = qPostingStr.get( t );  
+
+            for(String p : posListStr) {
+                posList.add( new Posting(p) );
             }
 
-            //this.ranking.printRevelantDocIds();
- 
-
+            qPosting.put(t, posList);
         }
 
+        return qPosting;
     }
 
 }

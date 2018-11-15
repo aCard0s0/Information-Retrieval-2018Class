@@ -35,9 +35,9 @@ public class Timer {
     public void printCurrentTime() {
         
         System.out.println(
-            new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(
-                (System.nanoTime() - this.startTime) / 1000000
-            ))
+            new SimpleDateFormat("HH:mm:ss:SSS").format(
+                new Date( (System.nanoTime() - this.startTime) / 1000000 )
+            )
         );
     }
 

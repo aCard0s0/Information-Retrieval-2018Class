@@ -130,4 +130,9 @@ public class ImprovedTokenizer implements Tokenizer{
     public List<String> getTermsList() {
         return termsList;
     }
+
+    @Override
+    public List<String> applyFilter(String[] userTerms) {
+        return null;
+    }
 }
