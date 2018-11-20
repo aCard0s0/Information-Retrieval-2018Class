@@ -135,7 +135,7 @@ public class Dictionary {
         {
             return false;
         }
-        return !segrList.containsKey(location.getFileName());
+        return segrList.containsKey(location.getFileName());
     }
 
     public void freeSegLessUsed() {

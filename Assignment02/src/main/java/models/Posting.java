@@ -28,7 +28,7 @@ public class Posting {
         this.tf_idf = 0;
         this.lposition = new HashSet<>();
         for(int i=1; i < tmp2.length; i++) {
-            lposition.add( Integer.parseInt( tmp2[i]) );
+            lposition.add( Integer.parseInt( tmp2[i] ) );
         }
     }
 

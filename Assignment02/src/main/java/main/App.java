@@ -2,6 +2,7 @@ package main;
 
 import core.Dictionary;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -127,12 +128,13 @@ public class App {
         System.out.println("*Search in data set:");
         System.out.println("\tWrite \"!exit\" to exit the program.");
 
-        while (true) {
-            System.out.print("Query: ");
-            String[] userTerms = new String[3];//sc.nextLine().split(" ");
-            userTerms[0] = "thinking";
-            userTerms[1] = "about";
-            userTerms[2] = "boobs";
+        
+        boolean stop = true;
+        System.out.print("Query: ");
+        String[] userTerms = sc.nextLine().split(" ");
+        
+        Timer t = new Timer();
+        while (stop) {
 
             if (userTerms.length == 1 && userTerms.equals("!exit")) {
                 sc.close();
@@ -163,6 +165,7 @@ public class App {
                 // Calculate Rank & Save, if revelant. (Top 10)
                 this.ranking.rankTerm(this.dic.postingList(term), this.dic.getNDoc());
                 this.ranking.printRevelantDocIds();
+                stop = false;
 
             } else {
 
@@ -198,6 +201,7 @@ public class App {
                         for(Posting p2 : posList2) {
                             if (p.getDocId() == p2.getDocId()) {
                                 flag = true;
+                                break;
                             }
                         }
                         if (!flag) 
@@ -205,7 +209,7 @@ public class App {
                         else if (i != qTerms.size()-1 )
                             flag = false;
                     }
-                    if (flag) {
+                    if (flag) {                 // encontramos doc com o mesmo id, vamos olhar para as posições dos termos
                         // analise position
                         Set<Integer> pos = p.getPositionList();
                         for(Integer p1pos : pos) {
@@ -229,14 +233,19 @@ public class App {
                                 }
                             }
                             if(flag){
-                                System.out.print(p.getDocId());
+                                
+                                System.out.println("DocId da query: "+ p.getDocId());
+
+                                stop = false;
                             }
                         }
                     }
                 }
+                stop = false;
             }
             
         }
+        t.printTotalDuration();
     }
 
 
