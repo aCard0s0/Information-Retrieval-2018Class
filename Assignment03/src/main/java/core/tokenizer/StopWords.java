@@ -14,7 +14,7 @@ import java.util.Set;
 public class StopWords {
 
     private Set<String> stopWords;
-    private final String DEFAULT_PATH = "src/main/java/tokenizer/stopwords.txt";
+    private final String DEFAULT_PATH = "src/main/java/core/tokenizer/stopwords.txt";
 
     public StopWords() {
 

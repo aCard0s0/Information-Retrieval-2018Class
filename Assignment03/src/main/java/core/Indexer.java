@@ -64,7 +64,6 @@ public class Indexer {
             } else {
                 tmppairs.get(term).addPosition(termPosition);
             }
-
             termPosition++;
         }
 

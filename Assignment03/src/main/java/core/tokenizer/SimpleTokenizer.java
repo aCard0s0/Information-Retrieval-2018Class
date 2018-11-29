@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import models.Doc;
+import models.Query;
 
 public class SimpleTokenizer implements Tokenizer{
 
@@ -56,6 +57,11 @@ public class SimpleTokenizer implements Tokenizer{
     @Override
     public List<String> getTermsList() {
         return termsList;
+    }
+
+    @Override
+    public Query getQueryTerms() {
+        return new Query(this.doc.getId(), this.termsList);
     }
     
 }

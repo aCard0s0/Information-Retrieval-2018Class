@@ -29,6 +29,7 @@ public class ArgsSelector {
     private Options opts;
     private final HelpFormatter help;
     private boolean skipDataMining;
+    private boolean isxml;
 
     public ArgsSelector(String[] args) {
         this.args = args;
@@ -91,7 +92,7 @@ public class ArgsSelector {
         );
 
         this.opts.addOption("cramazon", true, "Source to .tsv file for doc creation");
-        this.opts.addOption("crxml", true, "Source folder path with .xml files.");
+        this.opts.addOption("crxml", true, "Source folder path with .xml files. This option only use the Improved Tokenizer");
         this.opts.addOption("d", false, "Load default location the dicionary file to memory if not especify");
 
         this.opts.addOption(
@@ -122,6 +123,12 @@ public class ArgsSelector {
             }
             if (cmd.hasOption("crxml")) {
                 this.creader = new XMLReader( cmd.getOptionValue("crxml") );
+                this.isxml = true;
+                // this option allways use the improved tokenizer
+                this.stpwds = new StopWords();
+                this.stpwds.readStoptWords();
+                this.tokens = new ImprovedTokenizer( this.stpwds.getStopWords() );
+
             }
             if (cmd.hasOption("d")) {
                 setToSkipDataMinig();
@@ -233,5 +240,9 @@ public class ArgsSelector {
     
     public boolean skipDataMinig() {
         return this.skipDataMining;
+    }
+
+    public boolean isXMLreader() {
+        return this.isxml;
     }
 }

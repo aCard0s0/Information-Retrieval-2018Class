@@ -39,8 +39,12 @@ public class Main
             app.mergeIndexerAndCreateDicionary();
         }
         
-        /*  */
-        app.readUserInputTerms();
+        if (!opts.isXMLreader()) {
+            app.readUserInputTermsAss2();       /* Assignment 2 */
+
+        } else {
+            app.readUserInputTermsAss3();       /* Assignment 3 */
+        }
         
         System.out.println("Bye");
         System.exit(0);

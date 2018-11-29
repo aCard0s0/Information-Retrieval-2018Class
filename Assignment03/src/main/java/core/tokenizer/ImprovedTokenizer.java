@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 import models.Doc;
+import models.Query;
+
 import org.tartarus.snowball.SnowballStemmer;
 
 /**
@@ -128,11 +130,16 @@ public class ImprovedTokenizer implements Tokenizer{
 
     @Override
     public List<String> getTermsList() {
-        return termsList;
+        return this.termsList;
     }
 
     @Override
     public List<String> applyFilter(String[] userTerms) {
         return null;
+    }
+
+    @Override
+    public Query getQueryTerms() {
+        return new Query(this.doc.getId(), this.termsList);
     }
 }

@@ -1,14 +1,16 @@
 package main;
 
+import core.Assignment3;
 import core.Dictionary;
 
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import core.Indexer;
 import core.SegCollection;
@@ -19,6 +21,7 @@ import magement.Memory;
 import magement.Timer;
 import models.Doc;
 import models.Posting;
+import models.Query;
 import core.tokenizer.Tokenizer;
 
 public class App {
@@ -122,7 +125,7 @@ public class App {
     /**
      *      3º Phase Calculate the weight with 1+log(nFreq)
      */
-    public void readUserInputTerms() {
+    public void readUserInputTermsAss2() {
         
         Scanner sc = new Scanner(System.in);
         List<String> qTerms;
@@ -268,6 +271,43 @@ public class App {
         }
 
         return qPosting;
+    }
+
+    public void readUserInputTermsAss3() {
+
+        
+        Assignment3 ass = new Assignment3();
+        List<Query> lQueries = ass.readQueriesFile(this.tokens);
+
+        Map<String, Double> qtnormalized;
+        for(Query query : lQueries) {
+
+            qtnormalized = ass.normalize(query);
+            for(Entry<String, Double> pair : qtnormalized.entrySet() ) {
+
+                if (!this.dic.hasSegmentInMem(pair.getKey())) {
+                    this.dic.loadSegmentToMem(pair.getKey());
+                }
+                Set<String> postingList = this.dic.postingList(pair.getKey());
+
+                for(String p : postingList) {
+                    System.out.println(p);
+                }
+            }
+
+            
+        }
+
+        /*
+            TODO: peso da query X peso da doc na posting list
+         */
+        
+        /* for(String t : qTerms) {
+            // Calculate Rank & Save, if revelant. (Top 10)
+            this.ranking.rankTerm(this.dic.postingList(t), this.dic.getNDoc());
+            this.ranking.printRevelantDocIds();
+        } */
+        
     }
 
 }

@@ -49,6 +49,10 @@ public class XMLReader implements CorpusReader {
         Document document;
         XmlFile result;
 
+        if (this.docId == this.files.length) {
+            return null;
+        }
+
         try {
             documentBuilder = documentBuilderFactory.newDocumentBuilder();
             document = documentBuilder.parse(this.src + "/" + this.files[this.docId]);

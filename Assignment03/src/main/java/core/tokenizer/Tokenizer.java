@@ -4,6 +4,7 @@ package core.tokenizer;
 import java.util.List;
 
 import models.Doc;
+import models.Query;
 
 public interface Tokenizer {
 
@@ -30,4 +31,6 @@ public interface Tokenizer {
      * @return
      */
 	List<String> getTermsList();
+
+	Query getQueryTerms();
 }

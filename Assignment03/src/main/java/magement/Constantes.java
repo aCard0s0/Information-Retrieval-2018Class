@@ -8,7 +8,7 @@ public class Constantes {
 
     public static final String XML_SOURCE_Folder = "./cranfield";
 
-    public static final int MEMORY = 2048;
+    public static final int MEMORY = 512;
     //public static final int MEMORY = 1024;
     public static final double PERCENTAGEM = 0.85;
     
