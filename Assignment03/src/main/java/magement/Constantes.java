@@ -8,6 +8,9 @@ public class Constantes {
 
     public static final String XML_SOURCE_Folder = "./cranfield";
 
+    public static final String QUERIES_FOLDER = "./cranfield-queries/cranfield.queries.txt";
+    public static final String QUERIES_RELEVANCE_FOLDER = "./cranfield-queries/cranfield.query.relevance.txt";
+
     public static final int MEMORY = 512;
     //public static final int MEMORY = 1024;
     public static final double PERCENTAGEM = 0.85;

@@ -118,7 +118,8 @@ public class Indexer {
         }
 
         this.num++;
-        this.pairs = new HashMap<>();       // free References
+        //this.pairs = new HashMap<>();       // free References
+        // commented for Assignment 3
     }
 
     /**
@@ -137,4 +138,9 @@ public class Indexer {
             System.out.println(key + "=" + this.pairs.get(key));
         }
     }
+
+    public Set<Posting> getPostingListFromTerm(String key) {
+        return this.pairs.get(key);
+    }
+
 }

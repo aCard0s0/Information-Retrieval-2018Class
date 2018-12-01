@@ -11,18 +11,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.Map.Entry;
 
 import core.tokenizer.Tokenizer;
+import magement.Constantes;
 import models.Doc;
 import models.Query;
+import models.Relevance;
 
 public class Assignment3 {
     
-    private String QUERIES_FOLDER = "./cranfield-queries/cranfield.queries.txt";
-
     private String[] tokens;
     
+    FileInputStream inputStream;
+    BufferedReader reader;
 
     public Assignment3() {}
 
@@ -31,11 +35,11 @@ public class Assignment3 {
         List<Query> lqueries = new ArrayList<>();
 
         try {
-            FileInputStream inputStream = new FileInputStream( QUERIES_FOLDER );
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            inputStream = new FileInputStream( Constantes.QUERIES_FOLDER  );
+            reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String line;
             Doc doc;
-            int i= 0;
+            int i= 1;
 
             while((line = reader.readLine()) != null) {
                 
@@ -80,6 +84,45 @@ public class Assignment3 {
         }
         return termNormalized;
     }
+
+	public Map<Integer, Map<Integer, Integer>> readQueryRelevance() {
+
+        Map<Integer, Map<Integer, Integer>> relevance = new HashMap<>();
+        
+        try {
+            inputStream = new FileInputStream( Constantes.QUERIES_RELEVANCE_FOLDER );
+            reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            String line;
+            String[] tmp;
+            int qid = 0;
+            int prevQid = 0;
+            Map<Integer, Integer> relTmp = null;
+
+            while((line = reader.readLine()) != null) {
+                
+                tmp = line.split("\\s* ");
+                qid = Integer.parseInt(tmp[0]);
+                
+                if ( qid != prevQid ) {
+                    relTmp = new HashMap<>();
+                    relTmp.put(Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]));
+                    relevance.put(qid, relTmp);
+                    prevQid = qid;
+
+                } else {
+                    relTmp.put(Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]));
+                }
+
+            }
+            reader.close();
+
+        } catch (IOException e) {
+            //e.printStackTrace();
+		} catch (NullPointerException ee){
+            //ee.printStackTrace();
+        }
+        return relevance;
+	}
     
     
 }

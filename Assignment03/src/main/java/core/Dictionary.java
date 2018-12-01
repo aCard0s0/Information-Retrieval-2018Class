@@ -6,6 +6,7 @@
 package core;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -183,4 +184,14 @@ public class Dictionary {
     public void setnDoc(int ndoc) {
         this.nDocs = ndoc;
     }
+
+	public void print() {
+
+        // Order printing
+        Object[] keys = this.dic.keySet().toArray();
+        Arrays.sort(keys);
+        for (Object key : keys) {
+            System.out.println(key + "=" + this.dic.get(key));
+        }
+	}
 }

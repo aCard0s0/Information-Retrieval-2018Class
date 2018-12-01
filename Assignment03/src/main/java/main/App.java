@@ -3,6 +3,8 @@ package main;
 import core.Assignment3;
 import core.Dictionary;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -11,6 +13,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 import core.Indexer;
 import core.SegCollection;
@@ -22,6 +25,7 @@ import magement.Timer;
 import models.Doc;
 import models.Posting;
 import models.Query;
+import models.Relevance;
 import core.tokenizer.Tokenizer;
 
 public class App {
@@ -275,39 +279,81 @@ public class App {
 
     public void readUserInputTermsAss3() {
 
-        
         Assignment3 ass = new Assignment3();
+
+        Map<Integer, Map<Integer, Integer>> lRelevance = ass.readQueryRelevance();
+
+       /*  Object[] keys = lRelevance.keySet().toArray();
+        Arrays.sort(keys);
+        for (Object key : keys) {
+            Object[] keys2 = lRelevance.get(key).keySet().toArray();
+            for (Object key2 : keys2) { 
+                System.out.println(key +" "+ key2 + "=" +  lRelevance.get(key).get(key2));
+            }
+        } */
+
         List<Query> lQueries = ass.readQueriesFile(this.tokens);
 
         Map<String, Double> qtnormalized;
+        Map<Integer, Double> resultDoc;
+
         for(Query query : lQueries) {
 
+            resultDoc = new HashMap<>();
             qtnormalized = ass.normalize(query);
+
             for(Entry<String, Double> pair : qtnormalized.entrySet() ) {
-
-                if (!this.dic.hasSegmentInMem(pair.getKey())) {
-                    this.dic.loadSegmentToMem(pair.getKey());
+                
+                Set<Posting> postingList =  this.indexer.getPostingListFromTerm( pair.getKey() );
+                if (postingList == null) {
+                    continue;
                 }
-                Set<String> postingList = this.dic.postingList(pair.getKey());
 
-                for(String p : postingList) {
-                    System.out.println(p);
+                Double score;
+                int k;
+
+                for(Posting p : postingList) {
+
+                    k = p.getDocId();
+                    score = pair.getValue() * p.getWeight() * Math.log( this.cr.getNumOfDocs() / postingList.size() );
+                    
+                    if (!resultDoc.containsKey(k)) {
+                        resultDoc.put(k, score);
+                    
+                    } else {
+                        resultDoc.replace(k, resultDoc.get(k) + score);
+                    }
+                    
                 }
             }
 
+            // Order map by value
+            /* resultDoc.entrySet().stream()
+                    .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                    .forEach(System.out::println); */
             
-        }
+            // calculate tp & fp
+            int tp = 0;
+            int fp = 0;
+            for (Map.Entry<Integer, Double> entry : resultDoc.entrySet()) {
 
-        /*
-            TODO: peso da query X peso da doc na posting list
-         */
-        
-        /* for(String t : qTerms) {
-            // Calculate Rank & Save, if revelant. (Top 10)
-            this.ranking.rankTerm(this.dic.postingList(t), this.dic.getNDoc());
-            this.ranking.printRevelantDocIds();
-        } */
-        
+                if ( lRelevance.get( query.getId() ).containsKey( entry.getKey() ))  {
+                    tp++;
+                } else {
+                    fp++;
+                }
+            }
+            // calculate fn
+            int fn = 0;
+            for(Map.Entry<Integer, Integer> entry : lRelevance.get( query.getId() ).entrySet() ) {
+
+                if( !resultDoc.containsKey( entry.getKey() ) ) {
+                    fn++;
+                }
+            }
+            
+            System.out.println("fn: "+ fn +" fp: "+ fp +" tp: "+ tp);
+        }
     }
 
 }

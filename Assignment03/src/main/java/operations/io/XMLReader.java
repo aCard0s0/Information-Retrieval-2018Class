@@ -60,7 +60,7 @@ public class XMLReader implements CorpusReader {
             String title = document.getElementsByTagName("TITLE").item(0).getTextContent();
             String text = document.getElementsByTagName("TEXT").item(0).getTextContent();
 
-            result = new XmlFile(this.docId, title, text);
+            result = new XmlFile(this.docId+1, title, text);
             this.docId++;
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
