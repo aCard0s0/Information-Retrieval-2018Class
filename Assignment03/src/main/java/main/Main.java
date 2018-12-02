@@ -46,7 +46,6 @@ public class Main
             app.readUserInputTermsAss3();       /* Assignment 3 */
         }
         
-        System.out.println("Bye");
         System.exit(0);
     }
 }

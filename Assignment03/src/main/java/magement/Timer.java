@@ -28,7 +28,7 @@ public class Timer {
     public String getCurrentTime() {
 
         return new SimpleDateFormat("mm:ss:SSS").format(new Date(
-            (System.nanoTime() - this.startTime) / 1000000
+            (System.nanoTime() - this.startTime) / 1000
         ));
     }
 
@@ -36,7 +36,7 @@ public class Timer {
         
         System.out.println(
             new SimpleDateFormat("mm:ss:SSS").format(
-                new Date( (System.nanoTime() - this.startTime) / 1000000 )
+                new Date( (System.nanoTime() - this.startTime) / 1000 )
             )
         );
     }
@@ -48,6 +48,10 @@ public class Timer {
     public void printTotalDuration() {
 
         stopTimer();
-        System.out.println("Execution duration: "+ ((this.stopTime - this.startTime) / 1000000) +"ms");
+        System.out.println("Execution duration: "+ ((this.stopTime - this.startTime) / 1000) +"u");
+    }
+
+    public long getTime() {
+        return (this.stopTime - this.startTime) / 1000;
     }
 }

@@ -3,6 +3,7 @@ package main;
 import core.Assignment3;
 import core.Dictionary;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -277,27 +278,32 @@ public class App {
         return qPosting;
     }
 
+    double tp = 0;
+    double fp = 0;
+    double map = 0.0;    // mean average 
+    double mpr10 = 0.0;
+    int itr = 0;
+
     public void readUserInputTermsAss3() {
 
         Assignment3 ass = new Assignment3();
 
         Map<Integer, Map<Integer, Integer>> lRelevance = ass.readQueryRelevance();
-
-       /*  Object[] keys = lRelevance.keySet().toArray();
-        Arrays.sort(keys);
-        for (Object key : keys) {
-            Object[] keys2 = lRelevance.get(key).keySet().toArray();
-            for (Object key2 : keys2) { 
-                System.out.println(key +" "+ key2 + "=" +  lRelevance.get(key).get(key2));
-            }
-        } */
-
         List<Query> lQueries = ass.readQueriesFile(this.tokens);
 
         Map<String, Double> qtnormalized;
         Map<Integer, Double> resultDoc;
+        List<Double> lap = new ArrayList<>();
+        List<Integer> lrel10 = new ArrayList<>();
 
+        // Timer
+        Timer qt = new Timer();
+        Timer[] ql = new Timer[lQueries.size()];
+
+        int nq = 0;
         for(Query query : lQueries) {
+
+            ql[nq] = new Timer();
 
             resultDoc = new HashMap<>();
             qtnormalized = ass.normalize(query);
@@ -327,22 +333,39 @@ public class App {
                 }
             }
 
-            // Order map by value
-            /* resultDoc.entrySet().stream()
-                    .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                    .forEach(System.out::println); */
-            
-            // calculate tp & fp
-            int tp = 0;
-            int fp = 0;
-            for (Map.Entry<Integer, Double> entry : resultDoc.entrySet()) {
+            this.tp = 0;
+            this.fp = 0;
+            this.itr = 0;
+            this.mpr10 = 0.0;
+            this.map = 0.0;
 
-                if ( lRelevance.get( query.getId() ).containsKey( entry.getKey() ))  {
-                    tp++;
-                } else {
-                    fp++;
-                }
-            }
+            // Order map by value
+            resultDoc.entrySet().stream()
+                    .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                    .forEach( (e) -> {
+                        // calculate tp & fp
+                        if ( lRelevance.get( query.getId() ).containsKey( e.getKey() ))  {
+                            this.tp++;
+                            // sum average precision
+                            this.map += this.tp / (this.tp + this.fp);
+                        } else {
+                            this.fp++;
+                        }
+
+                        if (this.itr < 10) {
+                            this.mpr10 += this.tp / (this.tp + this.fp);
+
+                            // NDCG
+                            Integer tmp = lRelevance.get( query.getId() ).get(e.getKey());
+                            if (tmp != null) {
+                                lrel10.add(5 - tmp);
+                            } else {
+                                lrel10.add(5);
+                            }
+                            this.itr++;
+                        }
+                    } );
+            
             // calculate fn
             int fn = 0;
             for(Map.Entry<Integer, Integer> entry : lRelevance.get( query.getId() ).entrySet() ) {
@@ -352,8 +375,64 @@ public class App {
                 }
             }
             
-            System.out.println("fn: "+ fn +" fp: "+ fp +" tp: "+ tp);
-        }
-    }
+            double precision = this.tp / (this.tp + this.fp);
+            double recall = this.tp / (this.tp + fn);
+            double fprecision = (2 * recall * precision) / (recall + precision);
 
+            // mean average precision
+            if (this.map != 0)
+                this.map = this.map / this.tp;
+            lap.add(this.map);
+            
+            // NDCG
+            double dcg;
+            double idcg;
+            double ndcg;
+            if(lrel10.size() == 0) {
+                dcg = 0;
+                idcg = 0;
+                ndcg = 0;
+
+            } else {
+                dcg = lrel10.get(0);
+                for(int i=1; i < lrel10.size(); i++) {
+                    dcg += lrel10.get(i) / (Math.log(i+1) / Math.log(2.0) );
+                }
+
+                idcg = lrel10.get(0);
+                Collections.sort(lrel10, Collections.reverseOrder());
+                for(int i=1; i < lrel10.size(); i++) {
+                    idcg += lrel10.get(i) / (Math.log(i+1) / Math.log(2.0) );
+                }
+                ndcg = dcg / idcg;
+            }
+            
+            /* Print resutls */
+            System.out.println("Query #"+ (nq+1));
+            System.out.println("\tPrecision: "+ precision);
+            System.out.println("\tRecall: "+ recall);
+            System.out.println("\tF-measure: "+ fprecision);
+            System.out.println("\tMean Precision at Rank 10: "+ mpr10 / 10);
+            System.out.println("\tNormalized Discounted Cumulative Gain (NDGC): "+ ndcg);
+            System.out.print("\t");
+            ql[nq].printTotalDuration();
+
+            nq++;
+        }
+
+        double med = 0.0;
+        for(double d : lap) {
+            med += d;
+        }
+        med = med /  lap.size();
+        System.out.println("\nMean Average Precision: "+ med);
+        qt.printTotalDuration();
+
+        Long[] l = new Long[ql.length];
+        for(int i=0; i < l.length; i++) {
+            l[i] = ql[i].getTime();
+        }
+        Arrays.sort(l);
+        System.out.println("Median: "+ l[ l.length / 2 ]);
+    }
 }

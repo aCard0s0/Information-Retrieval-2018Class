@@ -1,0 +1,1590 @@
+*Default usage:
+	Max Memory: 512Mbs
+	Flush at: 85.0%
+	Source file: ./cranfield
+	Using Improved Tokenizer with Stop Words
+*Start reading the source file, creating Doc and normalize the Tokens.
+	File read completed
+	1400 Docs processed in 29:13:607
+*Merging parcial indexers and creating dicionary
+	Finished merging parcial indexers.
+	Dicionary completed in memory and disk.
+	Total time:33:32:235
+Query #1
+	Precision: 0.038461538461538464
+	Recall: 0.9285714285714286
+	F-measure: 0.07386363636363637
+	Mean Precision at Rank 10: 0.8114285714285714
+	Normalized Discounted Cumulative Gain (NDGC): 0.9023321808091684
+	Execution duration: 8577u
+Query #2
+	Precision: 0.03064516129032258
+	Recall: 0.7916666666666666
+	F-measure: 0.05900621118012422
+	Mean Precision at Rank 10: 0.46940476190476177
+	Normalized Discounted Cumulative Gain (NDGC): 0.951531714834627
+	Execution duration: 1110u
+Query #3
+	Precision: 0.01384083044982699
+	Recall: 1.0
+	F-measure: 0.027303754266211604
+	Mean Precision at Rank 10: 0.6380952380952382
+	Normalized Discounted Cumulative Gain (NDGC): 0.990528627920206
+	Execution duration: 948u
+Query #4
+	Precision: 0.0019011406844106464
+	Recall: 1.0
+	F-measure: 0.0037950664136622387
+	Mean Precision at Rank 10: 0.01
+	Normalized Discounted Cumulative Gain (NDGC): 0.9819231406165753
+	Execution duration: 1966u
+Query #5
+	Precision: 0.006279434850863423
+	Recall: 1.0
+	F-measure: 0.0124804992199688
+	Mean Precision at Rank 10: 0.2524603174603175
+	Normalized Discounted Cumulative Gain (NDGC): 0.9899015846306174
+	Execution duration: 821u
+Query #6
+	Precision: 0.004439511653718091
+	Recall: 1.0
+	F-measure: 0.00883977900552486
+	Mean Precision at Rank 10: 0.0690079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9938034252218868
+	Execution duration: 1092u
+Query #7
+	Precision: 0.005122950819672131
+	Recall: 1.0
+	F-measure: 0.01019367991845056
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9946571909001521
+	Execution duration: 1355u
+Query #8
+	Precision: 0.009666080843585237
+	Recall: 1.0
+	F-measure: 0.019147084421235853
+	Mean Precision at Rank 10: 0.0815079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9960324402283223
+	Execution duration: 1521u
+Query #9
+	Precision: 0.0031678986272439284
+	Recall: 1.0
+	F-measure: 0.006315789473684211
+	Mean Precision at Rank 10: 0.48579365079365083
+	Normalized Discounted Cumulative Gain (NDGC): 0.9970029075785557
+	Execution duration: 1051u
+Query #10
+	Precision: 0.013574660633484163
+	Recall: 0.75
+	F-measure: 0.02666666666666667
+	Mean Precision at Rank 10: 0.5203571428571429
+	Normalized Discounted Cumulative Gain (NDGC): 0.9977660872824764
+	Execution duration: 544u
+Query #11
+	Precision: 0.007954545454545454
+	Recall: 1.0
+	F-measure: 0.01578354002254791
+	Mean Precision at Rank 10: 0.14317460317460318
+	Normalized Discounted Cumulative Gain (NDGC): 0.9978677030298176
+	Execution duration: 1074u
+Query #12
+	Precision: 0.004812319538017324
+	Recall: 1.0
+	F-measure: 0.009578544061302681
+	Mean Precision at Rank 10: 0.3265079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9979946825173018
+	Execution duration: 1122u
+Query #13
+	Precision: 0.0
+	Recall: 0.0
+	F-measure: NaN
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9980219498583692
+	Execution duration: 289u
+Query #14
+	Precision: 0.005291005291005291
+	Recall: 1.0
+	F-measure: 0.010526315789473682
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9983534317034036
+	Execution duration: 380u
+Query #15
+	Precision: 0.014492753623188406
+	Recall: 1.0
+	F-measure: 0.02857142857142857
+	Mean Precision at Rank 10: 0.40246031746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.998743051407078
+	Execution duration: 243u
+Query #16
+	Precision: 0.003232758620689655
+	Recall: 1.0
+	F-measure: 0.006444683136412459
+	Mean Precision at Rank 10: 0.2928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.998818981945428
+	Execution duration: 1001u
+Query #17
+	Precision: 0.002066115702479339
+	Recall: 1.0
+	F-measure: 0.004123711340206186
+	Mean Precision at Rank 10: 0.2928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9989211088499056
+	Execution duration: 1012u
+Query #18
+	Precision: 0.003374578177727784
+	Recall: 1.0
+	F-measure: 0.006726457399103139
+	Mean Precision at Rank 10: 0.01
+	Normalized Discounted Cumulative Gain (NDGC): 0.9990512126290332
+	Execution duration: 1024u
+Query #19
+	Precision: 0.006704980842911878
+	Recall: 0.7777777777777778
+	F-measure: 0.013295346628679964
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9990781508827048
+	Execution duration: 1067u
+Query #20
+	Precision: 0.00831792975970425
+	Recall: 1.0
+	F-measure: 0.016498625114573784
+	Mean Precision at Rank 10: 0.5032539682539683
+	Normalized Discounted Cumulative Gain (NDGC): 0.9995422179694484
+	Execution duration: 1237u
+Query #21
+	Precision: 0.006896551724137931
+	Recall: 1.0
+	F-measure: 0.0136986301369863
+	Mean Precision at Rank 10: 0.15746031746031747
+	Normalized Discounted Cumulative Gain (NDGC): 0.9992148234414979
+	Execution duration: 581u
+Query #22
+	Precision: 0.0
+	Recall: 0.0
+	F-measure: NaN
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9991932389339964
+	Execution duration: 486u
+Query #23
+	Precision: 0.07981220657276995
+	Recall: 0.53125
+	F-measure: 0.13877551020408163
+	Mean Precision at Rank 10: 0.2860714285714286
+	Normalized Discounted Cumulative Gain (NDGC): 0.9994306933384617
+	Execution duration: 375u
+Query #24
+	Precision: 0.005859375
+	Recall: 1.0
+	F-measure: 0.011650485436893204
+	Mean Precision at Rank 10: 0.2140079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9993868218963481
+	Execution duration: 520u
+Query #25
+	Precision: 0.009793253536452665
+	Recall: 1.0
+	F-measure: 0.019396551724137928
+	Mean Precision at Rank 10: 0.7280952380952381
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996791205038127
+	Execution duration: 865u
+Query #26
+	Precision: 0.0056022408963585435
+	Recall: 1.0
+	F-measure: 0.011142061281337047
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9993094236120245
+	Execution duration: 1418u
+Query #27
+	Precision: 0.0038809831824062097
+	Recall: 1.0
+	F-measure: 0.007731958762886597
+	Mean Precision at Rank 10: 0.08456349206349206
+	Normalized Discounted Cumulative Gain (NDGC): 0.9993840032140053
+	Execution duration: 740u
+Query #28
+	Precision: 0.002617801047120419
+	Recall: 1.0
+	F-measure: 0.005221932114882507
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999383353842702
+	Execution duration: 721u
+Query #29
+	Precision: 0.00847457627118644
+	Recall: 1.0
+	F-measure: 0.01680672268907563
+	Mean Precision at Rank 10: 0.6286904761904761
+	Normalized Discounted Cumulative Gain (NDGC): 0.9995503475635719
+	Execution duration: 1149u
+Query #30
+	Precision: 0.006734006734006734
+	Recall: 0.8571428571428571
+	F-measure: 0.013363028953229397
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9994404499968803
+	Execution duration: 799u
+Query #31
+	Precision: 0.0
+	Recall: 0.0
+	F-measure: NaN
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9994820098047161
+	Execution duration: 1045u
+Query #32
+	Precision: 0.005509641873278237
+	Recall: 0.6666666666666666
+	F-measure: 0.010928961748633882
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9995191583877557
+	Execution duration: 622u
+Query #33
+	Precision: 0.0045385779122541605
+	Recall: 1.0
+	F-measure: 0.009036144578313253
+	Mean Precision at Rank 10: 0.40246031746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996250819570176
+	Execution duration: 752u
+Query #34
+	Precision: 0.008571428571428572
+	Recall: 1.0
+	F-measure: 0.016997167138810197
+	Mean Precision at Rank 10: 0.03361111111111111
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996003070693305
+	Execution duration: 669u
+Query #35
+	Precision: 0.005076142131979695
+	Recall: 0.6666666666666666
+	F-measure: 0.010075566750629721
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9995793355378015
+	Execution duration: 401u
+Query #36
+	Precision: 0.0024183796856106408
+	Recall: 1.0
+	F-measure: 0.004825090470446321
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996382593671292
+	Execution duration: 848u
+Query #37
+	Precision: 0.009857612267250822
+	Recall: 1.0
+	F-measure: 0.019522776572668113
+	Mean Precision at Rank 10: 0.2774603174603175
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996869291005821
+	Execution duration: 974u
+Query #38
+	Precision: 0.018292682926829267
+	Recall: 0.9
+	F-measure: 0.035856573705179286
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996291962350018
+	Execution duration: 571u
+Query #39
+	Precision: 0.01956521739130435
+	Recall: 0.6923076923076923
+	F-measure: 0.03805496828752643
+	Mean Precision at Rank 10: 0.1640079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997139108940766
+	Execution duration: 598u
+Query #40
+	Precision: 0.026217228464419477
+	Recall: 0.5833333333333334
+	F-measure: 0.05017921146953406
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996568689290538
+	Execution duration: 398u
+Query #41
+	Precision: 0.003947368421052632
+	Recall: 1.0
+	F-measure: 0.007863695937090432
+	Mean Precision at Rank 10: 0.4253571428571428
+	Normalized Discounted Cumulative Gain (NDGC): 0.999721739294974
+	Execution duration: 1850u
+Query #42
+	Precision: 0.005149330587023687
+	Recall: 1.0
+	F-measure: 0.010245901639344263
+	Mean Precision at Rank 10: 0.21746031746031744
+	Normalized Discounted Cumulative Gain (NDGC): 0.99976540458549
+	Execution duration: 1700u
+Query #43
+	Precision: 0.006289308176100629
+	Recall: 1.0
+	F-measure: 0.0125
+	Mean Precision at Rank 10: 0.7132539682539683
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997478111672273
+	Execution duration: 1651u
+Query #44
+	Precision: 0.0
+	Recall: 0.0
+	F-measure: NaN
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9996903573788878
+	Execution duration: 789u
+Query #45
+	Precision: 0.013230429988974642
+	Recall: 1.0
+	F-measure: 0.026115342763873773
+	Mean Precision at Rank 10: 0.22400793650793646
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997764104584728
+	Execution duration: 1621u
+Query #46
+	Precision: 0.014164305949008499
+	Recall: 1.0
+	F-measure: 0.02793296089385475
+	Mean Precision at Rank 10: 0.40480158730158733
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998164054049217
+	Execution duration: 1985u
+Query #47
+	Precision: 0.020172910662824207
+	Recall: 1.0
+	F-measure: 0.03954802259887006
+	Mean Precision at Rank 10: 0.42174603174603176
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998266788465519
+	Execution duration: 1166u
+Query #48
+	Precision: 0.028938906752411574
+	Recall: 0.8181818181818182
+	F-measure: 0.055900621118012424
+	Mean Precision at Rank 10: 0.10956349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997179035991118
+	Execution duration: 453u
+Query #49
+	Precision: 0.0021482277121374865
+	Recall: 1.0
+	F-measure: 0.004287245444801715
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.999726581721906
+	Execution duration: 1173u
+Query #50
+	Precision: 0.006389776357827476
+	Recall: 1.0
+	F-measure: 0.012698412698412697
+	Mean Precision at Rank 10: 0.2928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.999728956061861
+	Execution duration: 1258u
+Query #51
+	Precision: 0.00931098696461825
+	Recall: 1.0
+	F-measure: 0.018450184501845022
+	Mean Precision at Rank 10: 0.6250793650793651
+	Normalized Discounted Cumulative Gain (NDGC): 0.999838164258422
+	Execution duration: 1529u
+Query #52
+	Precision: 0.003898635477582846
+	Recall: 1.0
+	F-measure: 0.007766990291262135
+	Mean Precision at Rank 10: 0.5673015873015873
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997985419414402
+	Execution duration: 1533u
+Query #53
+	Precision: 0.009656652360515022
+	Recall: 0.9
+	F-measure: 0.01910828025477707
+	Mean Precision at Rank 10: 0.48579365079365083
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997616573467923
+	Execution duration: 1508u
+Query #54
+	Precision: 0.01079136690647482
+	Recall: 1.0
+	F-measure: 0.02135231316725979
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997332002856043
+	Execution duration: 1226u
+Query #55
+	Precision: 0.011682242990654205
+	Recall: 1.0
+	F-measure: 0.023094688221709004
+	Mean Precision at Rank 10: 0.20289682539682538
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997679110931301
+	Execution duration: 766u
+Query #56
+	Precision: 0.014414414414414415
+	Recall: 0.8
+	F-measure: 0.02831858407079646
+	Mean Precision at Rank 10: 0.19079365079365077
+	Normalized Discounted Cumulative Gain (NDGC): 0.999777128252499
+	Execution duration: 464u
+Query #57
+	Precision: 0.016149068322981366
+	Recall: 0.9285714285714286
+	F-measure: 0.031746031746031744
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997491274074638
+	Execution duration: 695u
+Query #58
+	Precision: 0.008264462809917356
+	Recall: 1.0
+	F-measure: 0.01639344262295082
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997394531201597
+	Execution duration: 1008u
+Query #59
+	Precision: 0.004219409282700422
+	Recall: 1.0
+	F-measure: 0.008403361344537815
+	Mean Precision at Rank 10: 0.10956349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997716695460759
+	Execution duration: 964u
+Query #60
+	Precision: 0.005112474437627812
+	Recall: 1.0
+	F-measure: 0.01017293997965412
+	Mean Precision at Rank 10: 0.6289682539682541
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998452781755741
+	Execution duration: 1440u
+Query #61
+	Precision: 0.008237232289950576
+	Recall: 1.0
+	F-measure: 0.01633986928104575
+	Mean Precision at Rank 10: 0.4203571428571428
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998130545373628
+	Execution duration: 664u
+Query #62
+	Precision: 0.004651162790697674
+	Recall: 1.0
+	F-measure: 0.009259259259259259
+	Mean Precision at Rank 10: 0.10956349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997752787949029
+	Execution duration: 979u
+Query #63
+	Precision: 0.0036719706242350062
+	Recall: 1.0
+	F-measure: 0.007317073170731708
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997597078401215
+	Execution duration: 772u
+Query #64
+	Precision: 0.0030349013657056147
+	Recall: 1.0
+	F-measure: 0.006051437216338881
+	Mean Precision at Rank 10: 0.047896825396825396
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997845734099977
+	Execution duration: 547u
+Query #65
+	Precision: 0.013539651837524178
+	Recall: 0.9333333333333333
+	F-measure: 0.026692087702573884
+	Mean Precision at Rank 10: 0.631031746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998684479895676
+	Execution duration: 916u
+Query #66
+	Precision: 0.004916420845624385
+	Recall: 1.0
+	F-measure: 0.00978473581213307
+	Mean Precision at Rank 10: 0.1491269841269841
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998037357877645
+	Execution duration: 771u
+Query #67
+	Precision: 0.014
+	Recall: 1.0
+	F-measure: 0.027613412228796843
+	Mean Precision at Rank 10: 0.9209920634920634
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998867874093629
+	Execution duration: 873u
+Query #68
+	Precision: 0.0061633281972265025
+	Recall: 0.8
+	F-measure: 0.012232415902140673
+	Mean Precision at Rank 10: 0.06456349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997879603942994
+	Execution duration: 491u
+Query #69
+	Precision: 0.006443298969072165
+	Recall: 1.0
+	F-measure: 0.012804097311139564
+	Mean Precision at Rank 10: 0.01
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997940656685453
+	Execution duration: 644u
+Query #70
+	Precision: 0.012484394506866416
+	Recall: 1.0
+	F-measure: 0.024660912453760786
+	Mean Precision at Rank 10: 0.021111111111111112
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997993565998738
+	Execution duration: 684u
+Query #71
+	Precision: 0.008567931456548347
+	Recall: 0.875
+	F-measure: 0.016969696969696968
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9997891506822346
+	Execution duration: 636u
+Query #72
+	Precision: 0.015952143569292122
+	Recall: 0.9411764705882353
+	F-measure: 0.03137254901960784
+	Mean Precision at Rank 10: 0.24079365079365084
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998335922243664
+	Execution duration: 794u
+Query #73
+	Precision: 0.01899335232668566
+	Recall: 1.0
+	F-measure: 0.03727865796831314
+	Mean Precision at Rank 10: 0.7132539682539683
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998631841303834
+	Execution duration: 849u
+Query #74
+	Precision: 0.007389162561576354
+	Recall: 1.0
+	F-measure: 0.014669926650366748
+	Mean Precision at Rank 10: 0.01
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998116940099315
+	Execution duration: 655u
+Query #75
+	Precision: 0.004816955684007707
+	Recall: 1.0
+	F-measure: 0.009587727708533077
+	Mean Precision at Rank 10: 0.06456349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998198599989908
+	Execution duration: 781u
+Query #76
+	Precision: 0.005946481665014866
+	Recall: 0.8571428571428571
+	F-measure: 0.011811023622047242
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998058970067528
+	Execution duration: 721u
+Query #77
+	Precision: 0.005847953216374269
+	Recall: 1.0
+	F-measure: 0.011627906976744186
+	Mean Precision at Rank 10: 0.10956349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998286487116294
+	Execution duration: 877u
+Query #78
+	Precision: 0.015957446808510637
+	Recall: 1.0
+	F-measure: 0.031413612565445025
+	Mean Precision at Rank 10: 0.1740079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998632576652418
+	Execution duration: 264u
+Query #79
+	Precision: 0.0051813471502590676
+	Recall: 1.0
+	F-measure: 0.010309278350515464
+	Mean Precision at Rank 10: 0.2140079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.99985071590017
+	Execution duration: 876u
+Query #80
+	Precision: 0.003658536585365854
+	Recall: 0.75
+	F-measure: 0.0072815533980582535
+	Mean Precision at Rank 10: 0.03361111111111111
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998247527362552
+	Execution duration: 784u
+Query #81
+	Precision: 0.006134969325153374
+	Recall: 1.0
+	F-measure: 0.012195121951219513
+	Mean Precision at Rank 10: 0.48579365079365083
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998450789726262
+	Execution duration: 389u
+Query #82
+	Precision: 0.004492362982929021
+	Recall: 1.0
+	F-measure: 0.00894454382826476
+	Mean Precision at Rank 10: 0.40246031746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998526848849052
+	Execution duration: 950u
+Query #83
+	Precision: 0.003872216844143272
+	Recall: 1.0
+	F-measure: 0.007714561234329799
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998270789578854
+	Execution duration: 678u
+Query #84
+	Precision: 0.009927797833935019
+	Recall: 1.0
+	F-measure: 0.01966041108132261
+	Mean Precision at Rank 10: 0.31107142857142855
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998791663141393
+	Execution duration: 908u
+Query #85
+	Precision: 0.0042643923240938165
+	Recall: 1.0
+	F-measure: 0.00849256900212314
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999831176686963
+	Execution duration: 725u
+Query #86
+	Precision: 0.0021645021645021645
+	Recall: 1.0
+	F-measure: 0.004319654427645788
+	Mean Precision at Rank 10: 0.43579365079365073
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998650171383905
+	Execution duration: 733u
+Query #87
+	Precision: 0.007532956685499058
+	Recall: 1.0
+	F-measure: 0.014953271028037382
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998372566893808
+	Execution duration: 894u
+Query #88
+	Precision: 0.01818181818181818
+	Recall: 1.0
+	F-measure: 0.03571428571428572
+	Mean Precision at Rank 10: 0.7822619047619048
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999203075914317
+	Execution duration: 302u
+Query #89
+	Precision: 0.006688963210702341
+	Recall: 1.0
+	F-measure: 0.013289036544850499
+	Mean Precision at Rank 10: 0.17650793650793647
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998655642100089
+	Execution duration: 654u
+Query #90
+	Precision: 0.023965141612200435
+	Recall: 0.8461538461538461
+	F-measure: 0.046610169491525424
+	Mean Precision at Rank 10: 0.31107142857142855
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998846214548012
+	Execution duration: 369u
+Query #91
+	Precision: 0.013266998341625208
+	Recall: 0.8888888888888888
+	F-measure: 0.026143790849673203
+	Mean Precision at Rank 10: 0.24079365079365084
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998658932061734
+	Execution duration: 479u
+Query #92
+	Precision: 0.016506189821182942
+	Recall: 0.9230769230769231
+	F-measure: 0.03243243243243243
+	Mean Precision at Rank 10: 0.7278174603174603
+	Normalized Discounted Cumulative Gain (NDGC): 0.999917111899765
+	Execution duration: 553u
+Query #93
+	Precision: 9.75609756097561E-4
+	Recall: 1.0
+	F-measure: 0.001949317738791423
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.999852804202145
+	Execution duration: 918u
+Query #94
+	Precision: 0.0160857908847185
+	Recall: 1.0
+	F-measure: 0.0316622691292876
+	Mean Precision at Rank 10: 0.2756349206349206
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999004849340629
+	Execution duration: 602u
+Query #95
+	Precision: 0.0030959752321981426
+	Recall: 1.0
+	F-measure: 0.00617283950617284
+	Mean Precision at Rank 10: 0.2928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998546973449798
+	Execution duration: 437u
+Query #96
+	Precision: 0.013
+	Recall: 1.0
+	F-measure: 0.02566633761105627
+	Mean Precision at Rank 10: 0.3569047619047619
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998867699693961
+	Execution duration: 763u
+Query #97
+	Precision: 0.023026315789473683
+	Recall: 0.7
+	F-measure: 0.044585987261146494
+	Mean Precision at Rank 10: 0.2274603174603175
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998712671455177
+	Execution duration: 305u
+Query #98
+	Precision: 0.006127450980392157
+	Recall: 1.0
+	F-measure: 0.012180267965895249
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998432523169988
+	Execution duration: 597u
+Query #99
+	Precision: 0.0043859649122807015
+	Recall: 0.75
+	F-measure: 0.00872093023255814
+	Mean Precision at Rank 10: 0.2619047619047619
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998823285573589
+	Execution duration: 504u
+Query #100
+	Precision: 0.010471204188481676
+	Recall: 0.8888888888888888
+	F-measure: 0.02069857697283312
+	Mean Precision at Rank 10: 0.3265079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998690333101755
+	Execution duration: 558u
+Query #101
+	Precision: 0.007125890736342043
+	Recall: 1.0
+	F-measure: 0.014150943396226415
+	Mean Precision at Rank 10: 0.594920634920635
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999093676233027
+	Execution duration: 609u
+Query #102
+	Precision: 0.00949367088607595
+	Recall: 0.75
+	F-measure: 0.01875
+	Mean Precision at Rank 10: 0.48579365079365083
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998681338692585
+	Execution duration: 462u
+Query #103
+	Precision: 0.00423728813559322
+	Recall: 0.5
+	F-measure: 0.008403361344537815
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999851281185766
+	Execution duration: 259u
+Query #104
+	Precision: 0.005330490405117271
+	Recall: 1.0
+	F-measure: 0.010604453870625663
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998545882770252
+	Execution duration: 725u
+Query #105
+	Precision: 0.007898894154818325
+	Recall: 1.0
+	F-measure: 0.01567398119122257
+	Mean Precision at Rank 10: 0.4203571428571428
+	Normalized Discounted Cumulative Gain (NDGC): 0.999897809723108
+	Execution duration: 468u
+Query #106
+	Precision: 0.011848341232227487
+	Recall: 1.0
+	F-measure: 0.023419203747072598
+	Mean Precision at Rank 10: 0.2928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998672949248892
+	Execution duration: 430u
+Query #107
+	Precision: 0.008526187576126675
+	Recall: 1.0
+	F-measure: 0.016908212560386476
+	Mean Precision at Rank 10: 0.3357936507936508
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998828631566625
+	Execution duration: 774u
+Query #108
+	Precision: 0.017811704834605598
+	Recall: 1.0
+	F-measure: 0.034999999999999996
+	Mean Precision at Rank 10: 0.643531746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999197062992009
+	Execution duration: 401u
+Query #109
+	Precision: 0.009009009009009009
+	Recall: 0.8
+	F-measure: 0.017817371937639197
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998600453569348
+	Execution duration: 397u
+Query #110
+	Precision: 0.005563282336578581
+	Recall: 1.0
+	F-measure: 0.011065006915629323
+	Mean Precision at Rank 10: 0.2928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998679332342312
+	Execution duration: 594u
+Query #111
+	Precision: 0.008838383838383838
+	Recall: 1.0
+	F-measure: 0.017521902377972465
+	Mean Precision at Rank 10: 0.20079365079365075
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998970312178495
+	Execution duration: 520u
+Query #112
+	Precision: 0.001863932898415657
+	Recall: 1.0
+	F-measure: 0.0037209302325581397
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998788984140958
+	Execution duration: 825u
+Query #113
+	Precision: 0.004424778761061947
+	Recall: 1.0
+	F-measure: 0.00881057268722467
+	Mean Precision at Rank 10: 0.3024603174603175
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998918194317041
+	Execution duration: 746u
+Query #114
+	Precision: 0.0035087719298245615
+	Recall: 1.0
+	F-measure: 0.006993006993006993
+	Mean Precision at Rank 10: 0.03361111111111111
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998739672284958
+	Execution duration: 865u
+Query #115
+	Precision: 0.0025619128949615714
+	Recall: 0.75
+	F-measure: 0.005106382978723405
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998714447349916
+	Execution duration: 817u
+Query #116
+	Precision: 0.009009009009009009
+	Recall: 1.0
+	F-measure: 0.01785714285714286
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998740020900625
+	Execution duration: 461u
+Query #117
+	Precision: 0.003067484662576687
+	Recall: 1.0
+	F-measure: 0.0061162079510703364
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999876484861114
+	Execution duration: 682u
+Query #118
+	Precision: 0.003911342894393742
+	Recall: 1.0
+	F-measure: 0.007792207792207793
+	Mean Precision at Rank 10: 0.20289682539682538
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998985893056914
+	Execution duration: 620u
+Query #119
+	Precision: 0.0010460251046025104
+	Recall: 1.0
+	F-measure: 0.002089864158829676
+	Mean Precision at Rank 10: 0.047896825396825396
+	Normalized Discounted Cumulative Gain (NDGC): 0.999891672578561
+	Execution duration: 724u
+Query #120
+	Precision: 0.014084507042253521
+	Recall: 1.0
+	F-measure: 0.02777777777777778
+	Mean Precision at Rank 10: 0.7718650793650793
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999280755934031
+	Execution duration: 513u
+Query #121
+	Precision: 0.013944223107569721
+	Recall: 1.0
+	F-measure: 0.0275049115913556
+	Mean Precision at Rank 10: 0.619920634920635
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999069781532471
+	Execution duration: 381u
+Query #122
+	Precision: 0.009453781512605041
+	Recall: 1.0
+	F-measure: 0.018730489073881373
+	Mean Precision at Rank 10: 0.3360714285714286
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999128987905938
+	Execution duration: 648u
+Query #123
+	Precision: 0.0022197558268590455
+	Recall: 1.0
+	F-measure: 0.004429678848283499
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998816475766491
+	Execution duration: 568u
+Query #124
+	Precision: 0.0031496062992125984
+	Recall: 1.0
+	F-measure: 0.006279434850863422
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998838489500239
+	Execution duration: 1010u
+Query #125
+	Precision: 0.015756302521008403
+	Recall: 0.8823529411764706
+	F-measure: 0.030959752321981424
+	Mean Precision at Rank 10: 0.01
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998941778809434
+	Execution duration: 641u
+Query #126
+	Precision: 0.01240694789081886
+	Recall: 0.625
+	F-measure: 0.024330900243309004
+	Mean Precision at Rank 10: 0.40246031746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999033638195083
+	Execution duration: 335u
+Query #127
+	Precision: 0.005076142131979695
+	Recall: 1.0
+	F-measure: 0.010101010101010102
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998988320263559
+	Execution duration: 697u
+Query #128
+	Precision: 0.0036496350364963502
+	Recall: 1.0
+	F-measure: 0.007272727272727273
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999890181987246
+	Execution duration: 509u
+Query #129
+	Precision: 0.007322175732217573
+	Recall: 1.0
+	F-measure: 0.014537902388369679
+	Mean Precision at Rank 10: 0.36702380952380953
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999194149472322
+	Execution duration: 707u
+Query #130
+	Precision: 0.006309148264984227
+	Recall: 0.8
+	F-measure: 0.012519561815336464
+	Mean Precision at Rank 10: 0.2076190476190476
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999301842083026
+	Execution duration: 499u
+Query #131
+	Precision: 0.008988764044943821
+	Recall: 1.0
+	F-measure: 0.0178173719376392
+	Mean Precision at Rank 10: 0.05472222222222223
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999099457566204
+	Execution duration: 701u
+Query #132
+	Precision: 0.03303964757709251
+	Recall: 1.0
+	F-measure: 0.06396588486140725
+	Mean Precision at Rank 10: 0.6759920634920635
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999573875087039
+	Execution duration: 396u
+Query #133
+	Precision: 0.013618677042801557
+	Recall: 1.0
+	F-measure: 0.02687140115163148
+	Mean Precision at Rank 10: 0.0690079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999125137046515
+	Execution duration: 405u
+Query #134
+	Precision: 0.001996007984031936
+	Recall: 1.0
+	F-measure: 0.003984063745019919
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998915065648845
+	Execution duration: 762u
+Query #135
+	Precision: 0.010416666666666666
+	Recall: 1.0
+	F-measure: 0.020618556701030924
+	Mean Precision at Rank 10: 0.5703571428571428
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999240712279485
+	Execution duration: 563u
+Query #136
+	Precision: 0.0032822757111597373
+	Recall: 1.0
+	F-measure: 0.006543075245365322
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998969813458813
+	Execution duration: 597u
+Query #137
+	Precision: 0.004291845493562232
+	Recall: 1.0
+	F-measure: 0.008547008547008546
+	Mean Precision at Rank 10: 0.20523809523809522
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999314389555133
+	Execution duration: 685u
+Query #138
+	Precision: 0.0023121387283236996
+	Recall: 1.0
+	F-measure: 0.00461361014994233
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999894449672292
+	Execution duration: 671u
+Query #139
+	Precision: 0.0039447731755424065
+	Recall: 1.0
+	F-measure: 0.007858546168958742
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9998962028037385
+	Execution duration: 777u
+Query #140
+	Precision: 0.009724473257698542
+	Recall: 1.0
+	F-measure: 0.019261637239165328
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999016874973747
+	Execution duration: 486u
+Query #141
+	Precision: 0.009538950715421303
+	Recall: 1.0
+	F-measure: 0.01889763779527559
+	Mean Precision at Rank 10: 0.3024603174603175
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999101886848804
+	Execution duration: 578u
+Query #142
+	Precision: 0.0016339869281045752
+	Recall: 1.0
+	F-measure: 0.0032626427406199023
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999005187938601
+	Execution duration: 439u
+Query #143
+	Precision: 0.00211864406779661
+	Recall: 1.0
+	F-measure: 0.004228329809725158
+	Mean Precision at Rank 10: 0.13246031746031744
+	Normalized Discounted Cumulative Gain (NDGC): 0.999909492779631
+	Execution duration: 710u
+Query #144
+	Precision: 0.006417112299465241
+	Recall: 1.0
+	F-measure: 0.01275239107332625
+	Mean Precision at Rank 10: 0.7611507936507936
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999436376649382
+	Execution duration: 681u
+Query #145
+	Precision: 0.006937561942517344
+	Recall: 1.0
+	F-measure: 0.013779527559055118
+	Mean Precision at Rank 10: 0.534920634920635
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999323858320802
+	Execution duration: 823u
+Query #146
+	Precision: 0.002280501710376283
+	Recall: 1.0
+	F-measure: 0.004550625711035268
+	Mean Precision at Rank 10: 0.43579365079365073
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999152971766134
+	Execution duration: 719u
+Query #147
+	Precision: 0.015570934256055362
+	Recall: 0.9
+	F-measure: 0.030612244897959183
+	Mean Precision at Rank 10: 0.22857142857142856
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999309486012544
+	Execution duration: 496u
+Query #148
+	Precision: 0.007874015748031496
+	Recall: 1.0
+	F-measure: 0.015625
+	Mean Precision at Rank 10: 0.40246031746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999173133203108
+	Execution duration: 645u
+Query #149
+	Precision: 0.014858841010401188
+	Recall: 0.9090909090909091
+	F-measure: 0.029239766081871343
+	Mean Precision at Rank 10: 0.6976984126984126
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999487210797501
+	Execution duration: 553u
+Query #150
+	Precision: 0.0029498525073746312
+	Recall: 1.0
+	F-measure: 0.0058823529411764705
+	Mean Precision at Rank 10: 0.3024603174603175
+	Normalized Discounted Cumulative Gain (NDGC): 0.999921422698725
+	Execution duration: 643u
+Query #151
+	Precision: 0.004975124378109453
+	Recall: 1.0
+	F-measure: 0.0099009900990099
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999044312382142
+	Execution duration: 810u
+Query #152
+	Precision: 0.0062047569803516025
+	Recall: 1.0
+	F-measure: 0.012332990750256937
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999058836007173
+	Execution duration: 697u
+Query #153
+	Precision: 0.008714596949891068
+	Recall: 0.5714285714285714
+	F-measure: 0.017167381974248927
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999161575411117
+	Execution duration: 382u
+Query #154
+	Precision: 0.002635046113306983
+	Recall: 1.0
+	F-measure: 0.005256241787122209
+	Mean Precision at Rank 10: 0.3024603174603175
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999230001815906
+	Execution duration: 649u
+Query #155
+	Precision: 0.010498687664041995
+	Recall: 0.6666666666666666
+	F-measure: 0.020671834625323
+	Mean Precision at Rank 10: 0.6286904761904761
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999323065957756
+	Execution duration: 349u
+Query #156
+	Precision: 0.05853658536585366
+	Recall: 0.8571428571428571
+	F-measure: 0.1095890410958904
+	Mean Precision at Rank 10: 0.8707142857142856
+	Normalized Discounted Cumulative Gain (NDGC): 0.999953653862534
+	Execution duration: 310u
+Query #157
+	Precision: 0.03188662533215235
+	Recall: 0.9230769230769231
+	F-measure: 0.06164383561643836
+	Mean Precision at Rank 10: 0.47940476190476183
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999364759450529
+	Execution duration: 931u
+Query #158
+	Precision: 0.031055900621118012
+	Recall: 0.625
+	F-measure: 0.05917159763313609
+	Mean Precision at Rank 10: 0.2928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999117312773936
+	Execution duration: 456u
+Query #159
+	Precision: 0.012195121951219513
+	Recall: 0.875
+	F-measure: 0.024054982817869417
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999094999105542
+	Execution duration: 721u
+Query #160
+	Precision: 0.004812319538017324
+	Recall: 1.0
+	F-measure: 0.009578544061302681
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999910807040368
+	Execution duration: 926u
+Query #161
+	Precision: 0.0052585451358457495
+	Recall: 1.0
+	F-measure: 0.010462074978204011
+	Mean Precision at Rank 10: 0.4360714285714285
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999332535680213
+	Execution duration: 1098u
+Query #162
+	Precision: 0.007774538386783284
+	Recall: 1.0
+	F-measure: 0.015429122468659594
+	Mean Precision at Rank 10: 0.20746031746031748
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999248397013248
+	Execution duration: 972u
+Query #163
+	Precision: 0.0027100271002710027
+	Recall: 1.0
+	F-measure: 0.005405405405405406
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999209995121938
+	Execution duration: 980u
+Query #164
+	Precision: 0.015590200445434299
+	Recall: 0.875
+	F-measure: 0.03063457330415755
+	Mean Precision at Rank 10: 0.48579365079365083
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999282569648312
+	Execution duration: 399u
+Query #165
+	Precision: 0.002751031636863824
+	Recall: 1.0
+	F-measure: 0.005486968449931413
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.999917606202256
+	Execution duration: 673u
+Query #166
+	Precision: 0.006666666666666667
+	Recall: 0.875
+	F-measure: 0.013232514177693762
+	Mean Precision at Rank 10: 0.01
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999215758883733
+	Execution duration: 939u
+Query #167
+	Precision: 0.0020855057351407717
+	Recall: 1.0
+	F-measure: 0.004162330905306972
+	Mean Precision at Rank 10: 0.021111111111111112
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999224194318991
+	Execution duration: 769u
+Query #168
+	Precision: 0.0018034265103697023
+	Recall: 1.0
+	F-measure: 0.0036003600360036
+	Mean Precision at Rank 10: 0.10956349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999204092400059
+	Execution duration: 986u
+Query #169
+	Precision: 0.0033812341504649195
+	Recall: 1.0
+	F-measure: 0.006739679865206402
+	Mean Precision at Rank 10: 0.24079365079365084
+	Normalized Discounted Cumulative Gain (NDGC): 0.999924510480686
+	Execution duration: 1113u
+Query #170
+	Precision: 0.008086253369272238
+	Recall: 1.0
+	F-measure: 0.016042780748663103
+	Mean Precision at Rank 10: 0.4631349206349206
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999458308121748
+	Execution duration: 810u
+Query #171
+	Precision: 0.0049586776859504135
+	Recall: 1.0
+	F-measure: 0.009868421052631578
+	Mean Precision at Rank 10: 0.48579365079365083
+	Normalized Discounted Cumulative Gain (NDGC): 0.99992993566848
+	Execution duration: 823u
+Query #172
+	Precision: 0.004860267314702308
+	Recall: 1.0
+	F-measure: 0.009673518742442563
+	Mean Precision at Rank 10: 0.484920634920635
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999406404820957
+	Execution duration: 906u
+Query #173
+	Precision: 0.0024449877750611247
+	Recall: 1.0
+	F-measure: 0.004878048780487805
+	Mean Precision at Rank 10: 0.3357936507936508
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999259490183832
+	Execution duration: 1043u
+Query #174
+	Precision: 0.006234413965087282
+	Recall: 1.0
+	F-measure: 0.012391573729863695
+	Mean Precision at Rank 10: 0.2140079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999267923750927
+	Execution duration: 963u
+Query #175
+	Precision: 0.005482456140350877
+	Recall: 1.0
+	F-measure: 0.010905125408942203
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999270827749438
+	Execution duration: 781u
+Query #176
+	Precision: 0.006557377049180328
+	Recall: 0.8571428571428571
+	F-measure: 0.013015184381778741
+	Mean Precision at Rank 10: 0.10956349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999298013273349
+	Execution duration: 830u
+Query #177
+	Precision: 0.024509803921568627
+	Recall: 1.0
+	F-measure: 0.04784688995215312
+	Mean Precision at Rank 10: 0.529920634920635
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999485830446642
+	Execution duration: 359u
+Query #178
+	Precision: 0.01
+	Recall: 1.0
+	F-measure: 0.019801980198019802
+	Mean Precision at Rank 10: 0.3140079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.999932933227613
+	Execution duration: 439u
+Query #179
+	Precision: 0.00333889816360601
+	Recall: 1.0
+	F-measure: 0.0066555740432612314
+	Mean Precision at Rank 10: 0.01
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999305113690667
+	Execution duration: 1108u
+Query #180
+	Precision: 0.02586206896551724
+	Recall: 0.8571428571428571
+	F-measure: 0.0502092050209205
+	Mean Precision at Rank 10: 0.6432539682539683
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999517163395416
+	Execution duration: 326u
+Query #181
+	Precision: 0.00546448087431694
+	Recall: 1.0
+	F-measure: 0.010869565217391304
+	Mean Precision at Rank 10: 0.047896825396825396
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999306868555292
+	Execution duration: 603u
+Query #182
+	Precision: 0.0022988505747126436
+	Recall: 1.0
+	F-measure: 0.0045871559633027525
+	Mean Precision at Rank 10: 0.43579365079365073
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999341142288817
+	Execution duration: 840u
+Query #183
+	Precision: 0.02564102564102564
+	Recall: 0.8461538461538461
+	F-measure: 0.049773755656108594
+	Mean Precision at Rank 10: 0.7847619047619048
+	Normalized Discounted Cumulative Gain (NDGC): 0.999971427003201
+	Execution duration: 501u
+Query #184
+	Precision: 0.03271028037383177
+	Recall: 1.0
+	F-measure: 0.06334841628959276
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999235962628005
+	Execution duration: 373u
+Query #185
+	Precision: 0.019189765458422176
+	Recall: 1.0
+	F-measure: 0.037656903765690385
+	Mean Precision at Rank 10: 0.5578174603174603
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999567136025336
+	Execution duration: 488u
+Query #186
+	Precision: 0.013
+	Recall: 0.8125
+	F-measure: 0.02559055118110236
+	Mean Precision at Rank 10: 0.48396825396825394
+	Normalized Discounted Cumulative Gain (NDGC): 0.999952242150623
+	Execution duration: 787u
+Query #187
+	Precision: 0.00390625
+	Recall: 0.6666666666666666
+	F-measure: 0.007766990291262136
+	Mean Precision at Rank 10: 0.20289682539682538
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999384787792233
+	Execution duration: 851u
+Query #188
+	Precision: 0.019572953736654804
+	Recall: 1.0
+	F-measure: 0.03839441535776614
+	Mean Precision at Rank 10: 0.7232539682539683
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999529582249745
+	Execution duration: 543u
+Query #189
+	Precision: 0.009650180940892641
+	Recall: 0.8888888888888888
+	F-measure: 0.019093078758949878
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999241319307558
+	Execution duration: 734u
+Query #190
+	Precision: 0.00513347022587269
+	Recall: 1.0
+	F-measure: 0.010214504596527068
+	Mean Precision at Rank 10: 0.4520238095238095
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999472369399995
+	Execution duration: 844u
+Query #191
+	Precision: 0.037037037037037035
+	Recall: 1.0
+	F-measure: 0.07142857142857142
+	Mean Precision at Rank 10: 0.7511507936507936
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999641844907688
+	Execution duration: 407u
+Query #192
+	Precision: 0.00997506234413965
+	Recall: 1.0
+	F-measure: 0.019753086419753086
+	Mean Precision at Rank 10: 0.36702380952380953
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999332330080589
+	Execution duration: 485u
+Query #193
+	Precision: 0.011111111111111112
+	Recall: 1.0
+	F-measure: 0.02197802197802198
+	Mean Precision at Rank 10: 0.573531746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999682833228967
+	Execution duration: 754u
+Query #194
+	Precision: 0.007290400972053463
+	Recall: 1.0
+	F-measure: 0.014475271411338964
+	Mean Precision at Rank 10: 0.08456349206349206
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999311941609716
+	Execution duration: 763u
+Query #195
+	Precision: 0.0033222591362126247
+	Recall: 1.0
+	F-measure: 0.006622516556291392
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999248473514726
+	Execution duration: 846u
+Query #196
+	Precision: 0.008658008658008658
+	Recall: 0.8333333333333334
+	F-measure: 0.017137960582690657
+	Mean Precision at Rank 10: 0.5673015873015873
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999521286105025
+	Execution duration: 1092u
+Query #197
+	Precision: 0.005847953216374269
+	Recall: 1.0
+	F-measure: 0.011627906976744186
+	Mean Precision at Rank 10: 0.5503571428571428
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999445934811936
+	Execution duration: 501u
+Query #198
+	Precision: 0.004381161007667032
+	Recall: 1.0
+	F-measure: 0.008724100327153763
+	Mean Precision at Rank 10: 0.07456349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999364730095347
+	Execution duration: 791u
+Query #199
+	Precision: 0.014519056261343012
+	Recall: 1.0
+	F-measure: 0.028622540250447224
+	Mean Precision at Rank 10: 0.08567460317460318
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999344484486655
+	Execution duration: 523u
+Query #200
+	Precision: 0.003821656050955414
+	Recall: 1.0
+	F-measure: 0.007614213197969543
+	Mean Precision at Rank 10: 0.3694047619047619
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999426315047476
+	Execution duration: 673u
+Query #201
+	Precision: 0.026490066225165563
+	Recall: 1.0
+	F-measure: 0.05161290322580646
+	Mean Precision at Rank 10: 0.546031746031746
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999650356144527
+	Execution duration: 604u
+Query #202
+	Precision: 0.012732615083251714
+	Recall: 0.9285714285714286
+	F-measure: 0.025120772946859903
+	Mean Precision at Rank 10: 0.19412698412698412
+	Normalized Discounted Cumulative Gain (NDGC): 0.999939169316597
+	Execution duration: 813u
+Query #203
+	Precision: 0.014176663031624863
+	Recall: 0.9285714285714286
+	F-measure: 0.027926960257787323
+	Mean Precision at Rank 10: 0.1491269841269841
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999406109761216
+	Execution duration: 713u
+Query #204
+	Precision: 0.01473922902494331
+	Recall: 0.9285714285714286
+	F-measure: 0.029017857142857144
+	Mean Precision at Rank 10: 0.10956349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999326428787579
+	Execution duration: 716u
+Query #205
+	Precision: 0.002229654403567447
+	Recall: 1.0
+	F-measure: 0.004449388209121246
+	Mean Precision at Rank 10: 0.24079365079365084
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999384447353192
+	Execution duration: 775u
+Query #206
+	Precision: 0.00340522133938706
+	Recall: 1.0
+	F-measure: 0.006787330316742081
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999285832431679
+	Execution duration: 700u
+Query #207
+	Precision: 0.004160887656033287
+	Recall: 0.6
+	F-measure: 0.008264462809917356
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999293842413246
+	Execution duration: 554u
+Query #208
+	Precision: 0.006122448979591836
+	Recall: 1.0
+	F-measure: 0.012170385395537523
+	Mean Precision at Rank 10: 0.38369047619047614
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999495716086254
+	Execution duration: 823u
+Query #209
+	Precision: 0.013001083423618635
+	Recall: 1.0
+	F-measure: 0.02566844919786096
+	Mean Precision at Rank 10: 0.06456349206349207
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999371056756321
+	Execution duration: 801u
+Query #210
+	Precision: 0.006564551422319475
+	Recall: 1.0
+	F-measure: 0.013043478260869566
+	Mean Precision at Rank 10: 0.48579365079365083
+	Normalized Discounted Cumulative Gain (NDGC): 0.999942048996634
+	Execution duration: 766u
+Query #211
+	Precision: 0.014925373134328358
+	Recall: 1.0
+	F-measure: 0.029411764705882353
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999374696477289
+	Execution duration: 605u
+Query #212
+	Precision: 0.016602809706257982
+	Recall: 0.9285714285714286
+	F-measure: 0.03262233375156838
+	Mean Precision at Rank 10: 0.8072619047619047
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999677484346798
+	Execution duration: 607u
+Query #213
+	Precision: 0.012895662368112544
+	Recall: 1.0
+	F-measure: 0.025462962962962965
+	Mean Precision at Rank 10: 0.5094841269841269
+	Normalized Discounted Cumulative Gain (NDGC): 0.999963076341974
+	Execution duration: 633u
+Query #214
+	Precision: 0.008213552361396304
+	Recall: 1.0
+	F-measure: 0.01629327902240326
+	Mean Precision at Rank 10: 0.1428968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999371952785205
+	Execution duration: 438u
+Query #215
+	Precision: 0.002061855670103093
+	Recall: 1.0
+	F-measure: 0.00411522633744856
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999313521637376
+	Execution duration: 739u
+Query #216
+	Precision: 0.0010638297872340426
+	Recall: 1.0
+	F-measure: 0.0021253985122210413
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999320904975499
+	Execution duration: 730u
+Query #217
+	Precision: 0.016025641025641024
+	Recall: 1.0
+	F-measure: 0.031545741324921134
+	Mean Precision at Rank 10: 0.08567460317460318
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999380306049229
+	Execution duration: 750u
+Query #218
+	Precision: 0.02857142857142857
+	Recall: 1.0
+	F-measure: 0.05555555555555556
+	Mean Precision at Rank 10: 0.08567460317460318
+	Normalized Discounted Cumulative Gain (NDGC): 0.999945825039391
+	Execution duration: 488u
+Query #219
+	Precision: 0.01615798922800718
+	Recall: 1.0
+	F-measure: 0.03180212014134275
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.999933677974363
+	Execution duration: 905u
+Query #220
+	Precision: 0.016493055555555556
+	Recall: 1.0
+	F-measure: 0.032450896669513236
+	Mean Precision at Rank 10: 0.0
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999343774168277
+	Execution duration: 1143u
+Query #221
+	Precision: 0.015397775876817793
+	Recall: 1.0
+	F-measure: 0.030328559393428812
+	Mean Precision at Rank 10: 0.13246031746031744
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999475020731002
+	Execution duration: 867u
+Query #222
+	Precision: 0.014010507880910683
+	Recall: 1.0
+	F-measure: 0.027633851468048358
+	Mean Precision at Rank 10: 0.5148015873015873
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999662456258251
+	Execution duration: 490u
+Query #223
+	Precision: 0.008333333333333333
+	Recall: 1.0
+	F-measure: 0.01652892561983471
+	Mean Precision at Rank 10: 0.3140079365079365
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999469392645165
+	Execution duration: 431u
+Query #224
+	Precision: 0.009122006841505131
+	Recall: 1.0
+	F-measure: 0.01807909604519774
+	Mean Precision at Rank 10: 0.047896825396825396
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999411718546696
+	Execution duration: 655u
+Query #225
+	Precision: 0.022135416666666668
+	Recall: 0.7083333333333334
+	F-measure: 0.042929292929292935
+	Mean Precision at Rank 10: 0.1928968253968254
+	Normalized Discounted Cumulative Gain (NDGC): 0.9999418596167757
+	Execution duration: 630u
+Mean Average Precision: 0.26742984104664813
+Execution duration: 180160u
+Median: 721
